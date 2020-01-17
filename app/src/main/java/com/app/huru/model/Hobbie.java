@@ -14,11 +14,11 @@ public class Hobbie {
         this.hobbieName = hobbieName;
     }
 
-    public String getActivityName(){
+    public String getHobbieName(){
         return this.hobbieName;
     }
 
-    public void setActivityName(String hobbieName){
+    public void setHobbieName(String hobbieName){
         this.hobbieName = hobbieName;
     }
 
