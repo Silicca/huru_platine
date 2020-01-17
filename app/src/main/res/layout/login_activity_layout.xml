@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_weight="0"
             android:src="@drawable/logo_huru" />
 
@@ -32,7 +32,7 @@
             android:layout_marginBottom="50px"
             android:textAlignment="center"
             android:fontFamily="@font/aileron_bold"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -41,8 +41,8 @@
             android:layout_weight="0"
             android:text="C'est la première fois que nous nous voyons !"
             android:textAlignment="center"
-            android:fontFamily="@font/aileron_bold"
-            android:textSize="20dp" />
+            android:fontFamily="@font/aileron_thin"
+            android:textSize="16dp" />
 
     </LinearLayout>
 
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Quel est votre nom ?"
-            android:fontFamily="@font/aileron_bold"
+            android:fontFamily="@font/aileron_thin"
             android:textSize="16dp"
             android:textAlignment="center"/>
 
@@ -69,7 +69,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:fontFamily="@font/aileron_bold"
-            android:text="" />
+            android:text=""
+            android:layout_marginLeft="80px"
+            android:layout_marginRight="80px"/>
+
 
         <Button
             android:id="@+id/login"
@@ -78,7 +81,9 @@
             android:background="@color/colorPrimary"
             android:text="S'identifier"
             android:fontFamily="@font/aileron_bold"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="80px"
+            android:layout_marginRight="80px"/>
     </LinearLayout>
 
 </LinearLayout>
