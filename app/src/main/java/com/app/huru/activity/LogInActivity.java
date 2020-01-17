@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.app.huru.R;
-
+/**
+ * Activité de première utilisation de l'application
+ * */
 public class LogInActivity extends AppCompatActivity {
 
     @Override
