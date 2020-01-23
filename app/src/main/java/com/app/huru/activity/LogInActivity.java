@@ -52,7 +52,11 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
             @Override
             public void onClick(View v) {
 
-                Log.v("user", userNameInput.getText().toString());
+                String userName = userNameInput.getText().toString();
+
+                if(!userName.isEmpty())
+
+                    userService.saveUser(userName);
             }
         });
 

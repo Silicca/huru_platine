@@ -28,4 +28,13 @@ public class UserService {
 
         return this.userDao.exists();
     }
+
+    public void saveUser(String userName){
+
+        User newUser = new User();
+
+        newUser.setName(userName);
+
+        this.userDao.save(newUser);
+    }
 }

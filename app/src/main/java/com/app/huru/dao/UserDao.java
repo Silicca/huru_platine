@@ -10,4 +10,6 @@ public interface UserDao {
     User get();
 
     boolean exists();
+
+    void save(User user);
 }

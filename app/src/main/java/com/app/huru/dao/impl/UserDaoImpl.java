@@ -1,5 +1,6 @@
 package com.app.huru.dao.impl;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -82,5 +83,20 @@ public class UserDaoImpl extends Database implements UserDao {
         cursor.close();
 
         return count != 0;
+    }
+
+    @Override
+    public void save(User user) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put("name", user.getName());
+
+        db.insert(this.getTableName(), null, values);
+
+        db.close();
+
     }
 }
