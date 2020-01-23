@@ -25,7 +25,7 @@ public class UserService {
     }
 
     public boolean userAlreadyExists(){
-        
+
         return this.userDao.exists();
     }
 }
