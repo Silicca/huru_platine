@@ -2,6 +2,7 @@ package com.app.huru.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +21,7 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
 
     private Button loginButton;
 
-    private EditText userNameInput;
+    private EditText usernameInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +29,11 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity_layout);
 
-        this.userService = new UserService(this.getApplicationContext());
+        this.userService = new UserService(getApplicationContext());
 
         if(this.userService.userAlreadyExists()){
 
-            Log.v("user", this.userService.getUser().toString());
+            this.startHomeActivity(this.userService.getUser().getName());
         }
         else{
             this.setupGUI();
@@ -43,7 +44,7 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
     @Override
     public void setupGUI() {
 
-        this.userNameInput = findViewById(R.id.username);
+        this.usernameInput = findViewById(R.id.username_text);
 
         this.loginButton = findViewById(R.id.loginButton);
 
@@ -52,14 +53,22 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
             @Override
             public void onClick(View v) {
 
-                String userName = userNameInput.getText().toString();
+                String username = usernameInput.getText().toString();
 
-                if(!userName.isEmpty())
-
-                    userService.saveUser(userName);
+                if(!username.isEmpty())
+                    userService.saveUser(username);
             }
         });
+    }
 
+    private void startHomeActivity(String username){
 
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+
+        intent.putExtra("username", username);
+
+        this.getApplicationContext().startActivity(intent);
+
+        finish();
     }
 }
