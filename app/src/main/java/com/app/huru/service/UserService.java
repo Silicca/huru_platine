@@ -23,4 +23,9 @@ public class UserService {
 
         return this.userDao.get();
     }
+
+    public boolean userAlreadyExists(){
+        
+        return this.userDao.exists();
+    }
 }
