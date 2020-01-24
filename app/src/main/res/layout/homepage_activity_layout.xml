@@ -5,18 +5,19 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/header"
-        android:padding="8dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/avatar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
+            android:layout_weight="1"
             app:srcCompat="@android:drawable/sym_def_app_icon" />
 
         <TextView
@@ -24,12 +25,12 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:layout_margin="5px"
+            android:layout_weight="1"
             android:background="@android:color/white"
             android:fontFamily="@font/aileron_thin"
             android:gravity="center"
             android:padding="10px"
-            android:layout_margin="5px"
-            android:layout_weight="1"
             android:text="Bonjour truc ! Voici un récapitulatif de ta journée"
             android:textColor="@android:color/black"
             android:textSize="12dp" />
@@ -38,9 +39,43 @@
             android:id="@+id/settings"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
+            android:layout_weight="1"
             app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/home_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hobbies" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activities" />
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mood" />
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stats" />
+        </com.google.android.material.tabs.TabLayout>
+    </androidx.viewpager.widget.ViewPager>
 </LinearLayout>
