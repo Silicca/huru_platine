@@ -15,9 +15,9 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:fontFamily="@font/aileron_bold"
-            android:textSize="14dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aileron_thin"
+            android:textSize="16dp"
             android:textColor="@android:color/black"
             android:layout_gravity="center"
             android:text="Ton planning" />
@@ -36,18 +36,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
+       android:layout_weight="0.4"
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homeNotesRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            />
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:weightSum="1"
         android:orientation="horizontal">
 
         <TextView
@@ -55,20 +57,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:fontFamily="@font/aileron_bold"
-            android:textSize="14dp"
+            android:fontFamily="@font/aileron_thin"
+            android:textSize="16dp"
             android:textColor="@android:color/black"
             android:layout_gravity="center"
             android:text="Ton humeur actuelle" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/moodButtonPlus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-
-            android:clickable="true"
-            android:src="@drawable/plus" />
     </LinearLayout>
 
     <LinearLayout
@@ -94,7 +88,7 @@
             android:text="Au top !"
             android:layout_marginLeft="50px"
             android:textColor="@android:color/black"
-            android:textSize="12dp" />
+            android:textSize="14dp" />
 
     </LinearLayout>
 

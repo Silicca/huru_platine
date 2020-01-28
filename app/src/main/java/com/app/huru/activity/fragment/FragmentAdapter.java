@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.app.huru.activity.fragment.home.HomeFragment;
+
 /**
  * Adapteur de fragment utilisé pour la HomeActivity
  * Permet de mettre en place les différentes fragments
@@ -32,6 +34,26 @@ public class FragmentAdapter extends FragmentPagerAdapter {
                 fragment = new HomeFragment();
 
             break;
+            case 1:
+
+                fragment = new HomeFragment();
+
+                break;
+            case 2:
+
+                fragment = new HomeFragment();
+
+                break;
+            case 3:
+
+                fragment = new HomeFragment();
+
+                break;
+            case 4:
+
+                fragment = new HomeFragment();
+
+                break;
         }
         return fragment;
     }
