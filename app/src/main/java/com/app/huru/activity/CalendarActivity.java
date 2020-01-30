@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.huru.R;
 import com.app.huru.activity.recyclerview.NoteViewAdapter;
 import com.app.huru.model.view.NoteViewModel;
+import com.app.huru.service.NoteService;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -27,10 +28,15 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
     private RecyclerView.LayoutManager layoutManager;
     private NoteViewAdapter noteViewAdapter;
 
+    private NoteService noteService;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_activity_layout);
+
+        this.noteService = new NoteService(this.getApplicationContext());
+
         this.setupGUI();
     }
 

@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
  * */
 public class Note {
 
-    private LocalDateTime date;
+    private Integer id;
+
+    private String date;
 
     private String description;
 
@@ -21,7 +23,7 @@ public class Note {
         //constructeur vide
     }
 
-    public Note(LocalDateTime date, String description, String participants, String lieu){
+    public Note(String date, String description, String participants, String lieu){
 
         this.date = date;
         this.description = description;
@@ -29,11 +31,11 @@ public class Note {
         this.lieu = lieu;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -59,5 +61,13 @@ public class Note {
 
     public void setLieu(String lieu) {
         this.lieu = lieu;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
