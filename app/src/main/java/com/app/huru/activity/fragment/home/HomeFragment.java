@@ -1,6 +1,7 @@
 package com.app.huru.activity.fragment.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.huru.R;
 import com.app.huru.activity.ActivityGUI;
+import com.app.huru.activity.CalendarActivity;
 import com.app.huru.model.view.HomeNoteViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,7 @@ public class HomeFragment extends Fragment implements ActivityGUI {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private HomeNoteViewAdapter homeNoteViewAdapter;
+    private FloatingActionButton calendarButtonPlus;
 
     public HomeFragment(){
         super();
@@ -66,6 +70,19 @@ public class HomeFragment extends Fragment implements ActivityGUI {
     @Override
     public void setupGUI() {
 
+        //BOUTON
+        this.calendarButtonPlus = this.parentView.findViewById(R.id.calendarButtonPlus);
+
+        this.calendarButtonPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(v.getContext(), CalendarActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        //RECYCLER VIEW
         this.recyclerView = this.parentView.findViewById(R.id.homeNotesRecyclerView);
 
         this.layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );

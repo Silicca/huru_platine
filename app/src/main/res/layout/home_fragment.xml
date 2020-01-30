@@ -23,7 +23,7 @@
             android:text="Ton planning" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/planningButtonPlus"
+            android:id="@+id/calendarButtonPlus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"

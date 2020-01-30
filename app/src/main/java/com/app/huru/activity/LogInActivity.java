@@ -55,8 +55,11 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
 
                 String username = usernameInput.getText().toString();
 
-                if(!username.isEmpty())
+                if(!username.isEmpty()){
                     userService.saveUser(username);
+                    startHomeActivity(username);
+                }
+
             }
         });
     }
