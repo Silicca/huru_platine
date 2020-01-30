@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private NoteViewAdapter homeNoteViewAdapter;
+    private NoteViewAdapter noteViewAdapter;
     private FloatingActionButton calendarButtonPlus;
 
     public HomeFragment(){
@@ -90,9 +90,9 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
         this.recyclerView.setLayoutManager(this.layoutManager);
 
-        this.homeNoteViewAdapter = new NoteViewAdapter();
+        this.noteViewAdapter = new NoteViewAdapter();
 
-        this.recyclerView.setAdapter(this.homeNoteViewAdapter);
+        this.recyclerView.setAdapter(this.noteViewAdapter);
 
         /**A SUPPRIMER, JUSTE POUR TESTER*/
 
@@ -102,7 +102,7 @@ public class HomeFragment extends Fragment implements ActivityGUI {
         models.add(new NoteViewModel("Enfants école","17:30","Moi","Collège Albert Calmette"));
         models.add(new NoteViewModel("Préparer à manger","19:30","Moi","A la maison"));
 
-        this.homeNoteViewAdapter.updateDataSet(models);
+        this.noteViewAdapter.updateDataSet(models);
 
         /**A SUPPRIMER, JUSTE POUR TESTER*/
 

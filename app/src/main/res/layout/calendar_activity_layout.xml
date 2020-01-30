@@ -32,7 +32,7 @@
             android:fontFamily="@font/aileron_thin"
             android:gravity="center"
             android:padding="10px"
-            android:text="Voici le calendrier. Il te permet d'ajouter des notes."
+            android:text="Voici le calendrier. Il te permet de voir et ajouter des notes."
             android:textColor="@android:color/black"
             android:textSize="12dp" />
 
@@ -48,12 +48,12 @@
 
         <CalendarView
             android:id="@+id/calendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -64,16 +64,26 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="Liste des notes"
             android:fontFamily="@font/aileron_thin"
             android:textSize="20dp"
-            tools:text="Liste des notes" />
+            android:gravity="center"
+             />
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
 
+            android:layout_marginTop="20px"
+            app:srcCompat="@color/details" />
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="30px"
             android:id="@+id/calendarNotesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            />
 
-    </LinearLayout>
+    </LinearLayout
+      >
 </LinearLayout>
