@@ -1,4 +1,4 @@
-package com.app.huru.activity.fragment.home;
+package com.app.huru.activity.recyclerview;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.huru.R;
-import com.app.huru.model.view.HomeNoteViewModel;
+import com.app.huru.model.view.NoteViewModel;
 import com.app.huru.tools.Animation;
 
 import java.util.ArrayList;
@@ -17,29 +17,29 @@ import java.util.List;
 /**
  * Adapteur pour l'affichage des notes
  * */
-public class HomeNoteViewAdapter extends RecyclerView.Adapter<HomeNoteViewHolder> {
+public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 
-    private List<HomeNoteViewModel> models;
+    private List<NoteViewModel> models;
 
-    public HomeNoteViewAdapter(){
+    public NoteViewAdapter(){
         this.models = new ArrayList<>();
     }
 
     @NonNull
     @Override
-    public HomeNoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View noteView = inflater.inflate(R.layout.home_note_view, parent, false);
 
-        return new HomeNoteViewHolder(noteView);
+        return new NoteViewHolder(noteView);
     }
 
     /**
      * Met à jour le jeu de données de l'adapteur
      * */
-    public void updateDataSet(List<HomeNoteViewModel> models){
+    public void updateDataSet(List<NoteViewModel> models){
 
         this.models.clear();
         this.models.addAll(models);
@@ -48,7 +48,7 @@ public class HomeNoteViewAdapter extends RecyclerView.Adapter<HomeNoteViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeNoteViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         holder.updateView(this.models.get(position));
         Animation.setAnimation(holder.getView());
     }

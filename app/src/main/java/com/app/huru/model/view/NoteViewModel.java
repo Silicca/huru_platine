@@ -2,18 +2,18 @@ package com.app.huru.model.view;
 /**
  * Représente le model contenant les données d'une note à afficher
  * */
-public class HomeNoteViewModel {
+public class NoteViewModel {
 
     private String title;
     private String hours;
     private String participants;
     private String location;
 
-    public HomeNoteViewModel(){
+    public NoteViewModel(){
 
     }
 
-    public HomeNoteViewModel(String title, String hours, String participants, String location) {
+    public NoteViewModel(String title, String hours, String participants, String location) {
         this.title = title;
         this.hours = hours;
         this.participants = participants;

@@ -1,4 +1,4 @@
-package com.app.huru.activity.fragment.home;
+package com.app.huru.activity.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.huru.R;
 import com.app.huru.activity.ActivityGUI;
 import com.app.huru.activity.CalendarActivity;
-import com.app.huru.model.view.HomeNoteViewModel;
+import com.app.huru.activity.recyclerview.NoteViewAdapter;
+import com.app.huru.model.view.NoteViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private HomeNoteViewAdapter homeNoteViewAdapter;
+    private NoteViewAdapter homeNoteViewAdapter;
     private FloatingActionButton calendarButtonPlus;
 
     public HomeFragment(){
@@ -89,17 +90,17 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
         this.recyclerView.setLayoutManager(this.layoutManager);
 
-        this.homeNoteViewAdapter = new HomeNoteViewAdapter();
+        this.homeNoteViewAdapter = new NoteViewAdapter();
 
         this.recyclerView.setAdapter(this.homeNoteViewAdapter);
 
         /**A SUPPRIMER, JUSTE POUR TESTER*/
 
-        List<HomeNoteViewModel> models = new ArrayList<>();
-        models.add(new HomeNoteViewModel("Réunion hebdo","10:00","Moi, Jean-yves","Unis, 4 rue entre deux villes"));
-        models.add(new HomeNoteViewModel("Faire les courses","15:00","Moi","Auchan Roncq"));
-        models.add(new HomeNoteViewModel("Enfants école","17:30","Moi","Collège Albert Calmette"));
-        models.add(new HomeNoteViewModel("Préparer à manger","19:30","Moi","A la maison"));
+        List<NoteViewModel> models = new ArrayList<>();
+        models.add(new NoteViewModel("Réunion hebdo","10:00","Moi, Jean-yves","Unis, 4 rue entre deux villes"));
+        models.add(new NoteViewModel("Faire les courses","15:00","Moi","Auchan Roncq"));
+        models.add(new NoteViewModel("Enfants école","17:30","Moi","Collège Albert Calmette"));
+        models.add(new NoteViewModel("Préparer à manger","19:30","Moi","A la maison"));
 
         this.homeNoteViewAdapter.updateDataSet(models);
 

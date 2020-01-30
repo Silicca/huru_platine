@@ -1,4 +1,4 @@
-package com.app.huru.activity.fragment.home;
+package com.app.huru.activity.recyclerview;
 
 import android.view.View;
 import android.widget.TextView;
@@ -7,12 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.huru.R;
-import com.app.huru.model.view.HomeNoteViewModel;
+import com.app.huru.model.view.NoteViewModel;
 
 /**
  * Représente un item à afficher dans la liste des notes du jour
  * */
-public class HomeNoteViewHolder extends RecyclerView.ViewHolder {
+public class NoteViewHolder extends RecyclerView.ViewHolder {
 
     private TextView title;
     private TextView hours;
@@ -21,7 +21,7 @@ public class HomeNoteViewHolder extends RecyclerView.ViewHolder {
 
     private View view;
 
-    public HomeNoteViewHolder(@NonNull View itemView) {
+    public NoteViewHolder(@NonNull View itemView) {
         super(itemView);
 
         this.view = itemView;
@@ -34,7 +34,7 @@ public class HomeNoteViewHolder extends RecyclerView.ViewHolder {
     /**
      * Met à jour les données du view holder
      * */
-    public void updateView(HomeNoteViewModel model){
+    public void updateView(NoteViewModel model){
 
         this.title.setText(model.getTitle());
         this.hours.setText(model.getHours());
