@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.app.huru.activity.CalendarActivity">
+
 
     <LinearLayout
         android:id="@+id/headerCalendar"
@@ -46,10 +49,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <CalendarView
+        <com.applandeo.materialcalendarview.CalendarView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/calendar"
             android:layout_width="match_parent"
-            android:layout_height="300dp" />
+            android:layout_height="300dp"
+            app:type="one_day_picker"
+            app:headerColor="@android:color/white"
+            app:headerLabelColor="@color/colorPrimary"
+            app:todayLabelColor="@color/colorPrimary"
+            app:selectionColor="@color/colorPrimary"
+            app:selectionLabelColor="@android:color/white"
+            app:eventsEnabled="true"
+            />
+
     </LinearLayout>
 
     <LinearLayout
@@ -67,7 +80,7 @@
             android:text="Liste des notes"
             android:fontFamily="@font/aileron_thin"
             android:textSize="20dp"
-            android:gravity="center"
+            android:gravity="left"
              />
         <ImageView
             android:id="@+id/imageView6"
@@ -83,6 +96,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/noteButtonPlus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:clickable="true"
+            android:src="@drawable/plus" />
 
     </LinearLayout
       >
