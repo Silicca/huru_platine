@@ -56,7 +56,7 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
         this.addNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), NoteActivity.class);
+                Intent intent = new Intent(v.getContext(), AddNoteActivity.class);
 
                 startActivity(intent);
             }

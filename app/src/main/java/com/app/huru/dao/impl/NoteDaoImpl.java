@@ -28,7 +28,7 @@ public class NoteDaoImpl extends Database implements NoteDao {
     public void onCreate(SQLiteDatabase db) {
 
         String script = "CREATE TABLE " + this.getTableName()+
-                "( id INTEGER PRIMARY KEY NOT NULL, date VARCHAR(255), description VARCHAR(255), participants VARCHAR(255), lieu VARCHAR(255) NOT NULL);";
+                "( id INTEGER PRIMARY KEY NOT NULL, date VARCHAR(255), hours VARCHAR(255), description VARCHAR(255), participants VARCHAR(255), place VARCHAR(255) NOT NULL);";
 
 
         db.execSQL(script);
@@ -64,11 +64,13 @@ public class NoteDaoImpl extends Database implements NoteDao {
 
                 note.setDate(cursor.getString(1));
 
-                note.setDescription(cursor.getString(2));
+                note.setHours(cursor.getString(2));
 
-                note.setParticipants(cursor.getString(3));
+                note.setDescription(cursor.getString(3));
 
-                note.setLieu(cursor.getString(4));
+                note.setParticipants(cursor.getString(4));
+
+                note.setPlace(cursor.getString(5));
 
             } while (cursor.moveToNext());
         }
@@ -88,9 +90,10 @@ public class NoteDaoImpl extends Database implements NoteDao {
         ContentValues values = new ContentValues();
 
         values.put("date", note.getDate());
+        values.put("hours", note.getHours());
         values.put("description", note.getDescription());
         values.put("participants", note.getParticipants());
-        values.put("lieu", note.getLieu());
+        values.put("place", note.getPlace());
 
         db.insert(this.getTableName(), null, values);
 

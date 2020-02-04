@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/headerNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/header"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/avatarCalendar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/sym_def_app_icon" />
+
+        <TextView
+            android:id="@+id/calendar_username"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="5px"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:fontFamily="@font/aileron_thin"
+            android:gravity="center"
+            android:padding="10px"
+            android:text="Ici, tu peux éditer une nouvelle note."
+            android:textColor="@android:color/black"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/aileron_bold"
+            android:text="Nouvelle note" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aileron_bold"
+                android:text="Heure: "
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/noteHours"
+                android:layout_width="100px"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberSigned" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aileron_bold"
+                android:text=":"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/noteMinutes"
+                android:layout_width="100px"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberSigned" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textSize="18dp"
+            android:fontFamily="@font/aileron_bold"
+            android:text="Description:" />
+
+        <EditText
+            android:id="@+id/noteDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/aileron_thin"
+            android:inputType="textPersonName"
+            android:layout_marginTop="10dp"
+            android:hint="Ma note ..." />
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textSize="18dp"
+            android:fontFamily="@font/aileron_bold"
+            android:text="Participants:" />
+
+        <EditText
+            android:id="@+id/noteParticipants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/aileron_thin"
+            android:inputType="textPersonName"
+            android:layout_marginTop="10dp"
+            android:hint="A, B, C ..."
+            />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textSize="18dp"
+            android:fontFamily="@font/aileron_bold"
+            android:text="Lieu:" />
+
+        <EditText
+            android:id="@+id/notePlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/aileron_thin"
+            android:inputType="textPersonName"
+            android:layout_marginTop="10dp"
+            android:hint="Lieu ..."
+            />
+
+        <Button
+            android:id="@+id/saveNoteButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="Enregistrer"
+            android:fontFamily="@font/aileron_bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="80px"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="80px"/>
+    </LinearLayout>
+
+</LinearLayout>

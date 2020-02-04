@@ -9,14 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.app.huru.R;
 
 /**
- * Représente l'activité concernant l'édition et la sauvegarde des notes de l'utilisateur
+ * Représente l'activité concernant l'ajout d'une note
  * */
-public class NoteActivity extends AppCompatActivity implements ActivityGUI {
+public class AddNoteActivity extends AppCompatActivity implements ActivityGUI {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.note_activity_layout);
+        setContentView(R.layout.add_note_activity_layout);
     }
 
     @Override

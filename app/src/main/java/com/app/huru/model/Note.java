@@ -13,22 +13,25 @@ public class Note {
 
     private String date;
 
+    private String hours;
+
     private String description;
 
     private String participants;
 
-    private String lieu;
+    private String place;
 
     public Note(){
         //constructeur vide
     }
 
-    public Note(String date, String description, String participants, String lieu){
+    public Note(String date, String hours, String description, String participants, String place){
 
         this.date = date;
+        this.hours = hours;
         this.description = description;
         this.participants = participants;
-        this.lieu = lieu;
+        this.place = place;
     }
 
     public String getDate() {
@@ -55,12 +58,12 @@ public class Note {
         this.participants = participants;
     }
 
-    public String getLieu() {
-        return lieu;
+    public String getPlace() {
+        return place;
     }
 
-    public void setLieu(String lieu) {
-        this.lieu = lieu;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public Integer getId() {
@@ -69,5 +72,13 @@ public class Note {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getHours() {
+        return hours;
+    }
+
+    public void setHours(String hours) {
+        this.hours = hours;
     }
 }
