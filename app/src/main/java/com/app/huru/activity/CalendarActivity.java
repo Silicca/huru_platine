@@ -73,9 +73,10 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
         models.add(new NoteViewModel("Faire les courses","15:00","Moi","Auchan Roncq"));
         models.add(new NoteViewModel("Enfants école","17:30","Moi","Collège Albert Calmette"));
         models.add(new NoteViewModel("Préparer à manger","19:30","Moi","A la maison"));
+
         List<Calendar> calendars = new ArrayList<>();
         calendar.setHighlightedDays(calendars);
-        
+
         this.noteViewAdapter.updateDataSet(models);
     }
 }
