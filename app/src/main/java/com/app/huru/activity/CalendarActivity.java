@@ -1,6 +1,8 @@
 package com.app.huru.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import com.app.huru.service.NoteService;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -27,6 +30,7 @@ import java.util.List;
 public class CalendarActivity  extends AppCompatActivity implements ActivityGUI {
 
     private CalendarView calendar;
+    private FloatingActionButton addNoteButton;
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -46,6 +50,17 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
 
     @Override
     public void setupGUI() {
+
+        this.addNoteButton = findViewById(R.id.addNoteButton);
+
+        this.addNoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), NoteActivity.class);
+
+                startActivity(intent);
+            }
+        });
 
         this.calendar = findViewById(R.id.calendar);
 

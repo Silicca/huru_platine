@@ -19,6 +19,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:name=".activity.HomeActivity"></activity>
         <activity android:screenOrientation="portrait" android:name=".activity.CalendarActivity"></activity>
+        <activity android:screenOrientation="portrait" android:name=".activity.NoteActivity"></activity>
     </application>
 
 </manifest>
