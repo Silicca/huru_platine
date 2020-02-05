@@ -2,7 +2,6 @@ package com.app.huru.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -13,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.huru.R;
 import com.app.huru.activity.recyclerview.NoteViewAdapter;
 import com.app.huru.model.Note;
-import com.app.huru.model.mapper.NoteViewModelMapper;
-import com.app.huru.model.view.NoteViewModel;
 import com.app.huru.service.NoteService;
 import com.app.huru.tools.DateFormatter;
 import com.applandeo.materialcalendarview.CalendarView;
@@ -22,9 +19,6 @@ import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -45,7 +39,7 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
     private NoteService noteService;
 
     private String date;
-    private List<NoteViewModel> notes;
+    private List<Note> notes;
 
     public static final int ADD_NOTE = 1;
 
@@ -129,13 +123,11 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
     /**
      * Met à jour la liste des notes à afficher
      * */
-    private void updateNotesList(){
+    private void updateNotesList() {
 
         this.notes.clear();
 
-        for(Note note : this.noteService.getNotesByDate(date)){
-            notes.add(NoteViewModelMapper.map(note));
-        }
+        this.notes = this.noteService.getNotesByDate(date);
 
         List<Calendar> calendars = new ArrayList<>();
         calendar.setHighlightedDays(calendars);

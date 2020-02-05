@@ -1,11 +1,13 @@
 package com.app.huru.model;
 
+import java.io.Serializable;
+
 /**
  *
  * Représente une note à réaliser dans l'emploi du temps de l'utilisateur
  *
  * */
-public class Note {
+public class Note implements Serializable {
 
     private int id;
 

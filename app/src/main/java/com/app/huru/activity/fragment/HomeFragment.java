@@ -17,10 +17,13 @@ import com.app.huru.R;
 import com.app.huru.activity.ActivityGUI;
 import com.app.huru.activity.CalendarActivity;
 import com.app.huru.activity.recyclerview.NoteViewAdapter;
-import com.app.huru.model.view.NoteViewModel;
+import com.app.huru.model.Note;
+import com.app.huru.service.NoteService;
+import com.app.huru.tools.DateFormatter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,6 +39,10 @@ public class HomeFragment extends Fragment implements ActivityGUI {
     private NoteViewAdapter noteViewAdapter;
     private FloatingActionButton calendarButtonPlus;
 
+    private NoteService noteService;
+
+    private List<Note> notes;
+
     public HomeFragment(){
         super();
 
@@ -47,6 +54,10 @@ public class HomeFragment extends Fragment implements ActivityGUI {
                              Bundle savedInstanceState) {
 
         this.parentView = inflater.inflate(this.layout, container, false);
+
+        this.noteService = new NoteService(this.parentView.getContext());
+
+        this.notes = new ArrayList<>();
 
         setupGUI();
 
@@ -94,17 +105,25 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
         this.recyclerView.setAdapter(this.noteViewAdapter);
 
-        /**A SUPPRIMER, JUSTE POUR TESTER*/
+        this.updateNotesList();
 
-        List<NoteViewModel> models = new ArrayList<>();
-        models.add(new NoteViewModel("Réunion hebdo","10:00","Moi, Jean-yves","Unis, 4 rue entre deux villes"));
-        models.add(new NoteViewModel("Faire les courses","15:00","Moi","Auchan Roncq"));
-        models.add(new NoteViewModel("Enfants école","17:30","Moi","Collège Albert Calmette"));
-        models.add(new NoteViewModel("Préparer à manger","19:30","Moi","A la maison"));
+    }
 
-        this.noteViewAdapter.updateDataSet(models);
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.updateNotesList();
+    }
 
-        /**A SUPPRIMER, JUSTE POUR TESTER*/
+    /**
+     * Met à jour la liste des notes à afficher
+     * */
+    private void updateNotesList() {
 
+        this.notes.clear();
+
+        this.notes = this.noteService.getNotesByDate(DateFormatter.dateToString(new Date()));
+
+        this.noteViewAdapter.updateDataSet(notes);
     }
 }

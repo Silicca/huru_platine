@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.huru.R;
-import com.app.huru.model.view.NoteViewModel;
+import com.app.huru.model.Note;
 import com.app.huru.tools.Animation;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.List;
  * */
 public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 
-    private List<NoteViewModel> models;
+    private List<Note> models;
 
     public NoteViewAdapter(){
         this.models = new ArrayList<>();
@@ -39,7 +39,7 @@ public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewHolder> {
     /**
      * Met à jour le jeu de données de l'adapteur
      * */
-    public void updateDataSet(List<NoteViewModel> models){
+    public void updateDataSet(List<Note> models){
 
         this.models.clear();
         this.models.addAll(models);
