@@ -19,4 +19,6 @@ public interface NoteDao {
     void remove(Integer noteId);
 
     void update(Note note);
+
+    Note get(Integer noteId);
 }

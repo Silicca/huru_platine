@@ -32,6 +32,8 @@ public class AddNoteActivity extends AppCompatActivity implements ActivityGUI {
 
     private String noteDate;
 
+    private Note note;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,7 @@ public class AddNoteActivity extends AppCompatActivity implements ActivityGUI {
         this.noteService = new NoteService(getApplicationContext());
 
         this.noteDate = getIntent().getExtras().getString("date");
+
 
         this.setupGUI();
     }

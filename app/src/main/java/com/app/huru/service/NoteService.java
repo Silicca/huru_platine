@@ -29,6 +29,10 @@ public class NoteService {
         this.noteDao.save(note);
     }
 
+    public Note getNote(Integer id){
+        return this.noteDao.get(id);
+    }
+
     public List<Note> getNotesByDate(String date){
         return this.noteDao.getByDate(date);
     }

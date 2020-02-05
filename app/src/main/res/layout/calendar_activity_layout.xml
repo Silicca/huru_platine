@@ -94,7 +94,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/selectedDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/aileron_thin"

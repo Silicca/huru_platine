@@ -3,6 +3,7 @@ package com.app.huru.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +42,8 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
     private String date;
     private List<Note> notes;
 
+    private TextView selectedDate;
+
     public static final int ADD_NOTE = 1;
 
     @Override
@@ -56,6 +59,8 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
 
     @Override
     public void setupGUI() {
+
+        this.selectedDate = findViewById(R.id.selectedDate);
 
         this.addNoteButton = findViewById(R.id.addNoteButton);
         /**
@@ -79,6 +84,7 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
             public void onDayClick(EventDay eventDay) {
 
                 date = DateFormatter.eventDayToString(eventDay);
+                selectedDate.setText(date.replace(' ', '/'));
                 updateNotesList();
 
             }
@@ -93,6 +99,7 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
 
             this.date = DateFormatter.dateToString(today);
 
+            this.selectedDate.setText(this.date.replace(' ', '/'));
         } catch (OutOfDateRangeException e) {
             e.printStackTrace();
         }

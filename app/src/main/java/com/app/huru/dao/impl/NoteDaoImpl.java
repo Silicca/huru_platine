@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.app.huru.dao.NoteDao;
 import com.app.huru.datasource.Database;
 import com.app.huru.model.Note;
+import com.app.huru.model.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -126,6 +127,37 @@ public class NoteDaoImpl implements NoteDao {
     @Override
     public void update(Note note) {
 
+    }
+
+    @Override
+    public Note get(Integer noteId) {
+        String sql = "SELECT  * FROM " + Database.TABLE_NAME_NOTES+" WHERE id="+noteId;
+
+        SQLiteDatabase db = this.db.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        Note note = new Note();
+
+        if (cursor.moveToFirst()) {
+
+            do {
+
+                note.setId(Integer.parseInt(cursor.getString(0)));
+
+                note.setDate(cursor.getString(1));
+
+                note.setHours(cursor.getString(2));
+
+                note.setTitle(cursor.getString(3));
+
+                note.setParticipants(cursor.getString(4));
+
+                note.setPlace(cursor.getString(5));
+
+            } while (cursor.moveToNext());
+        }
+
+        return note;
     }
 
 
