@@ -15,50 +15,34 @@ import java.util.List;
 /**
  * Implémentation du DAO concernant les notes de l'utilisateur
  * */
-public class NoteDaoImpl extends Database implements NoteDao {
+public class NoteDaoImpl implements NoteDao {
 
-    public NoteDaoImpl(Context ctx){
-        super(ctx, "notes");
+    private Database db;
 
+    public NoteDaoImpl(Database db){
+        this.db = db;
     }
     /**
      * Création de la table notes
-     * */
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-        String script = "CREATE TABLE " + this.getTableName()+
-                "( id INTEGER PRIMARY KEY NOT NULL, date VARCHAR(255), hours VARCHAR(255), description VARCHAR(255), participants VARCHAR(255), place VARCHAR(255) NOT NULL);";
-
-
-        db.execSQL(script);
-    }
-    /**
-     * Si la base de données change, nouvelle création de la table users
-     * */
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        db.execSQL("DROP TABLE IF EXISTS " + this.getTableName());
-
-        onCreate(db);
-    }
+    */
 
     @Override
     public List<Note> getAll() {
 
-        String sql = "SELECT  * FROM " + this.getTableName();
+        String sql = "SELECT  * FROM " + Database.TABLE_NAME_NOTES;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.db.getWritableDatabase();
+
         Cursor cursor = db.rawQuery(sql, null);
 
         List<Note> notes = new ArrayList<>();
 
-        Note note = new Note();
+
 
         if (cursor.moveToFirst()) {
 
             do {
+                Note note = new Note();
 
                 note.setId(Integer.parseInt(cursor.getString(0)));
 
@@ -66,11 +50,13 @@ public class NoteDaoImpl extends Database implements NoteDao {
 
                 note.setHours(cursor.getString(2));
 
-                note.setDescription(cursor.getString(3));
+                note.setTitle(cursor.getString(3));
 
                 note.setParticipants(cursor.getString(4));
 
                 note.setPlace(cursor.getString(5));
+
+                notes.add(note);
 
             } while (cursor.moveToNext());
         }
@@ -79,23 +65,55 @@ public class NoteDaoImpl extends Database implements NoteDao {
     }
 
     @Override
-    public List<Note> getByDate(LocalDateTime date) {
-        return null;
+    public List<Note> getByDate(String date) {
+
+        String sql = "SELECT  * FROM " + Database.TABLE_NAME_NOTES+" WHERE date='"+date+"'";
+
+        SQLiteDatabase db = this.db.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        List<Note> notes = new ArrayList<>();
+
+
+        if (cursor.moveToFirst()) {
+
+            do {
+
+                Note note = new Note();
+
+                note.setId(Integer.parseInt(cursor.getString(0)));
+
+                note.setDate(cursor.getString(1));
+
+                note.setHours(cursor.getString(2));
+
+                note.setTitle(cursor.getString(3));
+
+                note.setParticipants(cursor.getString(4));
+
+                note.setPlace(cursor.getString(5));
+
+                notes.add(note);
+
+            } while (cursor.moveToNext());
+        }
+
+        return notes;
     }
 
     @Override
     public void save(Note note) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.db.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
         values.put("date", note.getDate());
         values.put("hours", note.getHours());
-        values.put("description", note.getDescription());
+        values.put("title", note.getTitle());
         values.put("participants", note.getParticipants());
         values.put("place", note.getPlace());
 
-        db.insert(this.getTableName(), null, values);
+        db.insert(Database.TABLE_NAME_NOTES, null, values);
 
         db.close();
     }

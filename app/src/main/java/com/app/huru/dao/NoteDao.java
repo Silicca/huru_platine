@@ -12,7 +12,7 @@ public interface NoteDao {
 
     List<Note> getAll();
 
-    List<Note> getByDate(LocalDateTime date);
+    List<Note> getByDate(String date);
 
     void save(Note note);
 

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.app.huru.dao.NoteDao;
 import com.app.huru.dao.impl.NoteDaoImpl;
+import com.app.huru.datasource.Database;
 import com.app.huru.model.Note;
 
 import java.util.List;
@@ -14,8 +15,7 @@ public class NoteService {
 
     public NoteService(Context context){
 
-        this.noteDao = new NoteDaoImpl(context);
-
+        this.noteDao = new NoteDaoImpl(Database.getInstance(context));
     }
 
 
@@ -27,5 +27,9 @@ public class NoteService {
     public void saveNote(Note note){
 
         this.noteDao.save(note);
+    }
+
+    public List<Note> getNotesByDate(String date){
+        return this.noteDao.getByDate(date);
     }
 }

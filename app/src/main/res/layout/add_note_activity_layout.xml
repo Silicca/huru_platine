@@ -52,6 +52,24 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/aileron_bold"
             android:text="Nouvelle note" />
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textSize="18dp"
+            android:fontFamily="@font/aileron_bold"
+            android:text="Titre:" />
+
+        <EditText
+            android:id="@+id/noteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/aileron_thin"
+            android:inputType="textPersonName"
+            android:layout_marginTop="10dp"
+            android:hint="Ma note ..." />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,24 +108,7 @@
                 android:inputType="numberSigned" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:textSize="18dp"
-            android:fontFamily="@font/aileron_bold"
-            android:text="Description:" />
 
-        <EditText
-            android:id="@+id/noteDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="@font/aileron_thin"
-            android:inputType="textPersonName"
-            android:layout_marginTop="10dp"
-            android:hint="Ma note ..." />
         <TextView
             android:id="@+id/textView12"
             android:layout_width="match_parent"

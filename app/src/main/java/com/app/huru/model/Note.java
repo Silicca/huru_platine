@@ -1,7 +1,5 @@
 package com.app.huru.model;
 
-import java.time.LocalDateTime;
-
 /**
  *
  * Représente une note à réaliser dans l'emploi du temps de l'utilisateur
@@ -9,13 +7,13 @@ import java.time.LocalDateTime;
  * */
 public class Note {
 
-    private Integer id;
+    private int id;
+
+    private String title;
 
     private String date;
 
     private String hours;
-
-    private String description;
 
     private String participants;
 
@@ -25,11 +23,11 @@ public class Note {
         //constructeur vide
     }
 
-    public Note(String date, String hours, String description, String participants, String place){
+    public Note(String title, String date, String hours, String participants, String place){
 
+        this.title = title;
         this.date = date;
         this.hours = hours;
-        this.description = description;
         this.participants = participants;
         this.place = place;
     }
@@ -40,14 +38,6 @@ public class Note {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getParticipants() {
@@ -66,19 +56,27 @@ public class Note {
         this.place = place;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getHours() {
         return hours;
     }
 
     public void setHours(String hours) {
         this.hours = hours;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

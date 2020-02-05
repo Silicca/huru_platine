@@ -12,42 +12,20 @@ import com.app.huru.model.User;
 /**
  * Implémentation du DAO concernant l'utilisateur de l'application
  * */
-public class UserDaoImpl extends Database implements UserDao {
+public class UserDaoImpl implements UserDao {
 
+    private Database db;
 
-    public UserDaoImpl(Context ctx){
-        super(ctx, "users");
-
-    }
-    /**
-     * Création de la table users
-     * */
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-        String script = "CREATE TABLE " + this.getTableName()+
-                "( id INTEGER PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL);";
-
-
-        db.execSQL(script);
-    }
-    /**
-     * Si la base de données change, nouvelle création de la table users
-     * */
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        db.execSQL("DROP TABLE IF EXISTS " + this.getTableName());
-
-        onCreate(db);
+    public UserDaoImpl(Database db){
+        this.db = db;
     }
 
     @Override
     public User get() {
 
-        String sql = "SELECT  * FROM " + this.getTableName();
+        String sql = "SELECT  * FROM " + Database.TABLE_NAME_USERS;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.db.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
         User user = new User();
@@ -72,9 +50,9 @@ public class UserDaoImpl extends Database implements UserDao {
     @Override
     public boolean exists() {
 
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
 
-        String countQuery = "SELECT  * FROM " + this.getTableName();
+        String countQuery = "SELECT  * FROM " + Database.TABLE_NAME_USERS;
 
         Cursor cursor = db.rawQuery(countQuery, null);
 
@@ -88,13 +66,13 @@ public class UserDaoImpl extends Database implements UserDao {
     @Override
     public void save(User user) {
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.db.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
         values.put("name", user.getName());
 
-        db.insert(this.getTableName(), null, values);
+        db.insert(Database.TABLE_NAME_USERS, null, values);
 
         db.close();
 

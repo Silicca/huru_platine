@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.app.huru.dao.UserDao;
 import com.app.huru.dao.impl.UserDaoImpl;
+import com.app.huru.datasource.Database;
 import com.app.huru.model.User;
 /**
  * Service permettant d'effectuer différents traitement sur les données liées à l'utilisateur de l'application
@@ -14,7 +15,7 @@ public class UserService {
 
     public UserService(Context context){
 
-        this.userDao = new UserDaoImpl(context);
+        this.userDao = new UserDaoImpl(Database.getInstance(context));
 
     }
 

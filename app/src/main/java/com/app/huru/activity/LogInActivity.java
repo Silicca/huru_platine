@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.app.huru.R;
+import com.app.huru.service.NoteService;
 import com.app.huru.service.UserService;
 
 /**
