@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 /**
  * Adapteur de fragment utilisé pour la HomeActivity
- * Permet de mettre en place les différentes fragments
+ * Permet de mettre en place les différents fragments
  *
  * */
 public class FragmentAdapter extends FragmentPagerAdapter {
@@ -34,7 +34,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
             break;
             case 1:
 
-                fragment = new HomeFragment();
+                fragment = new HobbieFragment();
 
                 break;
             case 2:

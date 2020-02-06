@@ -25,6 +25,7 @@ public class Database extends SQLiteOpenHelper {
      * */
     public static final String TABLE_NAME_USERS = "users";
     public static final String TABLE_NAME_NOTES = "notes";
+    public static final String TABLE_NAME_HOBBIES = "hobbies";
 
     /**
      * @param context objet Context à utiliser pour le SQLiteOpenHelper
@@ -55,18 +56,33 @@ public class Database extends SQLiteOpenHelper {
         String createTableNotes = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_NOTES+
                 "( id INTEGER PRIMARY KEY NOT NULL, date VARCHAR(255) NOT NULL, hours VARCHAR(255) NOT NULL, title VARCHAR(255) NOT NULL, participants VARCHAR(255) NOT NULL, place VARCHAR(255) NOT NULL);";
 
+        String createTableHobbies = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_HOBBIES+
+                "( id INTEGER PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL);";
+
+        /**
+         * Création des hobbies de base proposés par l'application
+         */
+        String insertIntoTableHobbies1 = "INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('0', 'Dessin');";
+        String insertIntoTableHobbies2 = "INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('1', 'Musique');";
+        String insertIntoTableHobbies3 = "INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('2', 'Photographie');";
+
+
         db.execSQL(createTableUsers);
         db.execSQL(createTableNotes);
-
+        db.execSQL(createTableHobbies);
+        db.execSQL(insertIntoTableHobbies1);
+        db.execSQL(insertIntoTableHobbies2);
+        db.execSQL(insertIntoTableHobbies3);
     }
     /**
-     * Si la base de données change, nouvelle création de la table users
+     * Si la base de données change, nouvelle création des tables
      * */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_NOTES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_HOBBIES);
 
         onCreate(db);
     }

@@ -4,22 +4,28 @@ package com.app.huru.model;
  * */
 public class Hobbie {
 
-    private String hobbieName;
+    private int id;
+
+    private String name;
 
     public Hobbie(){
         //constructeur vide
     }
 
-    public Hobbie(String hobbieName){
-        this.hobbieName = hobbieName;
+    public Hobbie(String name){
+        this.name = name;
     }
 
-    public String getHobbieName(){
-        return this.hobbieName;
+    public int getId() { return this.id; }
+
+    public void setId(int id) { this.id = id; }
+
+    public String getName(){
+        return this.name;
     }
 
-    public void setHobbieName(String hobbieName){
-        this.hobbieName = hobbieName;
+    public void setName(String name){
+        this.name = name;
     }
 
 }

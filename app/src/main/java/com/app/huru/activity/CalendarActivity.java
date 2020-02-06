@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Activité affichant un calendrier et les notes de l'utilisateur
  * */
-public class CalendarActivity  extends AppCompatActivity implements ActivityGUI {
+public class CalendarActivity extends AppCompatActivity implements ActivityGUI {
 
     private CalendarView calendar;
     private FloatingActionButton addNoteButton;
@@ -70,6 +70,7 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AddNoteActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("date", date);
                 startActivity(intent);
             }
@@ -127,6 +128,7 @@ public class CalendarActivity  extends AppCompatActivity implements ActivityGUI 
         this.updateNotesList();
 
     }
+
     /**
      * Met à jour la liste des notes à afficher
      * */

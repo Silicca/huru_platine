@@ -41,6 +41,7 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
                 Log.v("note", title.getText().toString());
                 Intent intent = new Intent(v.getContext(), NoteDetailsActivity.class);
                 intent.putExtra("noteId", id);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 view.getContext().getApplicationContext().startActivity(intent);
             }
         });

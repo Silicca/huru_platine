@@ -52,14 +52,15 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/aileron_bold"
             android:text="Nouvelle note" />
+
         <TextView
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:textSize="18dp"
             android:fontFamily="@font/aileron_bold"
-            android:text="Titre:" />
+            android:text="Titre :"
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/noteTitle"
@@ -82,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/aileron_bold"
-                android:text="Heure: "
+                android:text="Heure : "
                 android:textSize="18dp" />
 
             <EditText
@@ -114,9 +115,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:textSize="18dp"
             android:fontFamily="@font/aileron_bold"
-            android:text="Participants:" />
+            android:text="Participants :"
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/noteParticipants"
@@ -134,9 +135,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:textSize="18dp"
             android:fontFamily="@font/aileron_bold"
-            android:text="Lieu:" />
+            android:text="Lieu :"
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/notePlace"

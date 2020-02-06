@@ -10,7 +10,7 @@
 
 
     <LinearLayout
-        android:id="@+id/headerCalendar"
+        android:id="@+id/headerHobbies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/header"
@@ -18,7 +18,7 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/avatarCalendar"
+            android:id="@+id/avatarHobbies"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,49 +36,25 @@
             android:fontFamily="@font/aileron_thin"
             android:gravity="center"
             android:padding="10px"
-            android:text="Voici le calendrier. Il te permet de voir et ajouter des notes."
+            android:text="Voici la liste de tes hobbies. Cela te permet de les voir et les modifier."
             android:textColor="@android:color/black"
             android:textSize="12dp" />
 
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/calendarLayout"
+    <RelativeLayout
+        android:id="@+id/endHobbies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/headerCalendar"
+        android:layout_below="@id/headerHobbies"
         android:layout_alignParentEnd="true"
         android:orientation="horizontal">
 
-        <com.applandeo.materialcalendarview.CalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/calendar"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:eventsEnabled="true"
-            app:headerColor="@android:color/white"
-            app:headerLabelColor="@color/colorPrimary"
-            app:selectionColor="@color/colorPrimary"
-            app:selectionLabelColor="@android:color/white"
-            app:todayLabelColor="@color/colorPrimary"
-
-            app:type="one_day_picker" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-
-        android:id="@+id/endCalendar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/calendarLayout"
-        android:orientation="vertical">
-
         <LinearLayout
-            android:id="@+id/listeNoteHeader"
+            android:id="@+id/listHobbiesHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50px"
             android:background="@color/colorPrimary"
             android:orientation="horizontal">
 
@@ -89,31 +65,22 @@
                 android:layout_weight="0.5"
                 android:fontFamily="@font/aileron_thin"
                 android:padding="8dp"
-                android:text="Liste des notes du :"
+                android:text="Liste de mes hobbies :"
                 android:textColor="@android:color/white"
                 android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/selectedDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/aileron_thin"
-                android:padding="8dp"
-                android:text="04/02/2020"
-                android:textColor="@android:color/white"
-                android:textSize="20dp" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/calendarNotesRecyclerView"
+            android:id="@+id/listHobbiesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/listeNoteHeader"
+            android:layout_below="@id/listHobbiesHeader"
 
            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addNoteButton"
+            android:id="@+id/addHobbieButton"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

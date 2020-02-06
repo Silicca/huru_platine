@@ -15,38 +15,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.huru.R;
 import com.app.huru.activity.ActivityGUI;
-import com.app.huru.activity.CalendarActivity;
-import com.app.huru.activity.recyclerview.NoteViewAdapter;
-import com.app.huru.model.Note;
-import com.app.huru.service.NoteService;
-import com.app.huru.tools.DateFormatter;
+import com.app.huru.activity.AddHobbieActivity;
+import com.app.huru.activity.HobbieDetailsActivity;
+import com.app.huru.activity.recyclerview.HobbieViewAdapter;
+import com.app.huru.model.Hobbie;
+import com.app.huru.service.HobbieService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  * Fragment pour la page principale
  * */
-public class HomeFragment extends Fragment implements ActivityGUI {
+public class HobbieFragment extends Fragment implements ActivityGUI {
 
     private int layout;
     private View parentView;
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private NoteViewAdapter noteViewAdapter;
-    private FloatingActionButton calendarButtonPlus;
+    private HobbieViewAdapter hobbieViewAdapter;
+    private FloatingActionButton hobbieButtonPlus;
 
-    private NoteService noteService;
+    private HobbieService hobbieService;
 
-    private List<Note> notes;
+    private List<Hobbie> hobbies;
 
-    public HomeFragment(){
+    public HobbieFragment(){
         super();
 
-        this.layout = R.layout.home_fragment;
+        this.layout = R.layout.hobbie_fragment;
     }
 
     @Override
@@ -55,9 +54,9 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
         this.parentView = inflater.inflate(this.layout, container, false);
 
-        this.noteService = new NoteService(this.parentView.getContext());
+        this.hobbieService = new HobbieService(this.parentView.getContext());
 
-        this.notes = new ArrayList<>();
+        this.hobbies = new ArrayList<>();
 
         setupGUI();
 
@@ -83,48 +82,48 @@ public class HomeFragment extends Fragment implements ActivityGUI {
     public void setupGUI() {
 
         //BOUTON
-        this.calendarButtonPlus = this.parentView.findViewById(R.id.calendarButtonPlus);
+        this.hobbieButtonPlus = this.parentView.findViewById(R.id.hobbiesButtonPlus);
 
-        this.calendarButtonPlus.setOnClickListener(new View.OnClickListener() {
+        this.hobbieButtonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(v.getContext(), CalendarActivity.class);
+                Intent intent = new Intent(v.getContext(), AddHobbieActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(intent);
             }
         });
 
         //RECYCLER VIEW
-        this.recyclerView = this.parentView.findViewById(R.id.homeNotesRecyclerView);
+        this.recyclerView = this.parentView.findViewById(R.id.hobbiesRecyclerView);
 
         this.layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
 
         this.recyclerView.setLayoutManager(this.layoutManager);
 
-        this.noteViewAdapter = new NoteViewAdapter();
+        this.hobbieViewAdapter = new HobbieViewAdapter();
 
-        this.recyclerView.setAdapter(this.noteViewAdapter);
+        this.recyclerView.setAdapter(this.hobbieViewAdapter);
 
-        this.updateNotesList();
+        this.updateHobbiesList();
 
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        this.updateNotesList();
+        this.updateHobbiesList();
     }
 
     /**
-     * Met à jour la liste des notes à afficher
+     * Met à jour la liste des hobbies de l'utilisateur
      * */
-    private void updateNotesList() {
+    private void updateHobbiesList() {
 
-        this.notes.clear();
+        this.hobbies.clear();
 
-        this.notes = this.noteService.getNotesByDate(DateFormatter.dateToString(new Date()));
+        this.hobbies = this.hobbieService.getAllHobbies();
 
-        this.noteViewAdapter.updateDataSet(notes);
+        this.hobbieViewAdapter.updateDataSet(hobbies);
     }
 }

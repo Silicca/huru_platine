@@ -49,7 +49,7 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
 
         this.loginButton = findViewById(R.id.loginButton);
 
-        this.loginButton.setOnClickListener(new View.OnClickListener() {
+        this.loginButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -68,6 +68,7 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
     private void startHomeActivity(String username){
 
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         intent.putExtra("username", username);
 

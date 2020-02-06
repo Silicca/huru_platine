@@ -1,16 +1,12 @@
 package com.app.huru.dao.impl;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.app.huru.dao.NoteDao;
 import com.app.huru.datasource.Database;
 import com.app.huru.model.Note;
-import com.app.huru.model.User;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 /**
