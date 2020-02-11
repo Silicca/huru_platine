@@ -122,6 +122,11 @@ public class NoteDaoImpl implements NoteDao {
     @Override
     public void remove(Integer noteId) {
 
+        SQLiteDatabase db = this.db.getWritableDatabase();
+
+        db.delete(Database.TABLE_NAME_NOTES, "id=?", new String[]{String.valueOf(noteId)});
+
+        db.close();
     }
 
     @Override

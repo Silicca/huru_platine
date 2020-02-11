@@ -33,6 +33,11 @@ public class NoteService {
 
         this.noteDao.update(note);
     }
+
+    public void removeNote(Integer noteId){
+        this.noteDao.remove(noteId);
+    }
+
     public Note getNote(Integer id){
         return this.noteDao.get(id);
     }

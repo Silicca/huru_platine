@@ -18,7 +18,7 @@ public class NoteDetailsActivity extends AppCompatActivity implements ActivityGU
     private NoteService noteService;
 
     private Button modifyNoteButton;
-    private Button saveNoteButton;
+    private Button removeNoteButton;
 
     private TextView noteDate;
 
@@ -48,7 +48,7 @@ public class NoteDetailsActivity extends AppCompatActivity implements ActivityGU
         this.noteDate = findViewById(R.id.noteDate);
 
         this.modifyNoteButton = findViewById(R.id.modifyNoteButton);
-        this.saveNoteButton = findViewById(R.id.saveNoteButton);
+        this.removeNoteButton = findViewById(R.id.removeNoteButton);
 
         this.noteHours = findViewById(R.id.noteHours);
         this.noteMinutes = findViewById(R.id.noteMinutes);
@@ -70,6 +70,13 @@ public class NoteDetailsActivity extends AppCompatActivity implements ActivityGU
                 saveModification();
             }
         });
+
+        this.removeNoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeNote();
+            }
+        });
     }
 
     private void saveModification(){
@@ -81,6 +88,12 @@ public class NoteDetailsActivity extends AppCompatActivity implements ActivityGU
 
         this.noteService.updateNote(this.note);
 
+        finish();
+    }
+
+    private void removeNote(){
+
+        this.noteService.removeNote(this.note.getId());
         finish();
     }
 }
