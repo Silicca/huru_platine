@@ -29,6 +29,10 @@ public class NoteService {
         this.noteDao.save(note);
     }
 
+    public void updateNote(Note note){
+
+        this.noteDao.update(note);
+    }
     public Note getNote(Integer id){
         return this.noteDao.get(id);
     }

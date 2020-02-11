@@ -41,6 +41,8 @@ public class UserDaoImpl implements UserDao {
             } while (cursor.moveToNext());
         }
 
+        db.close();
+
         return user;
     }
 

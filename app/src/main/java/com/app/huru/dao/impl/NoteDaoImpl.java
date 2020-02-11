@@ -58,6 +58,8 @@ public class NoteDaoImpl implements NoteDao {
             } while (cursor.moveToNext());
         }
 
+        db.close();
+
         return notes;
     }
 
@@ -95,6 +97,8 @@ public class NoteDaoImpl implements NoteDao {
             } while (cursor.moveToNext());
         }
 
+        db.close();
+
         return notes;
     }
 
@@ -123,6 +127,19 @@ public class NoteDaoImpl implements NoteDao {
     @Override
     public void update(Note note) {
 
+        ContentValues values = new ContentValues();
+
+        values.put("date", note.getDate());
+        values.put("hours", note.getHours());
+        values.put("title", note.getTitle());
+        values.put("participants", note.getParticipants());
+        values.put("place", note.getPlace());
+
+        SQLiteDatabase db = this.db.getWritableDatabase();
+
+        db.update(Database.TABLE_NAME_NOTES, values, "id=?", new String[]{String.valueOf(note.getId())});
+
+        db.close();
     }
 
     @Override
@@ -152,6 +169,7 @@ public class NoteDaoImpl implements NoteDao {
 
             } while (cursor.moveToNext());
         }
+        db.close();
 
         return note;
     }

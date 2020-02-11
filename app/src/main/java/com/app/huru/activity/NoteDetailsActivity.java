@@ -1,6 +1,7 @@
 package com.app.huru.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -61,5 +62,25 @@ public class NoteDetailsActivity extends AppCompatActivity implements ActivityGU
         this.noteTitle.setText(this.note.getTitle());
         this.noteParticipants.setText(this.note.getParticipants());
         this.notePlace.setText(this.note.getPlace());
+
+        this.modifyNoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                saveModification();
+            }
+        });
+    }
+
+    private void saveModification(){
+
+        this.note.setTitle(this.noteTitle.getText().toString());
+        this.note.setPlace(this.notePlace.getText().toString());
+        this.note.setParticipants(this.noteParticipants.getText().toString());
+        this.note.setHours(this.noteHours.getText().toString()+":"+this.noteMinutes.getText().toString());
+
+        this.noteService.updateNote(this.note);
+
+        finish();
     }
 }
