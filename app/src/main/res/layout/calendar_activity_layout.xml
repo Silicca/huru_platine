@@ -60,9 +60,9 @@
             app:headerLabelColor="@color/colorPrimary"
             app:selectionColor="@color/colorPrimary"
             app:selectionLabelColor="@android:color/white"
-            app:todayLabelColor="@color/colorPrimary"
-
-            app:type="one_day_picker" />
+            app:todayLabelColor="@color/colorPrimaryDark"
+            app:datePicker="true"
+            />
 
     </LinearLayout>
 

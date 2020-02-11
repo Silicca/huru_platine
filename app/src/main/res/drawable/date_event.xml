@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap
+            android:gravity="top|left"
+            android:tint="@color/colorPrimaryDark"
+            android:src="@drawable/dot" />
+    </item>
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:tint="@color/colorPrimary"
+            android:src="@drawable/dot" />
+    </item>
+
+    <item android:left="120dp">
+        <bitmap
+            android:gravity="right"
+            android:tint="@color/colorAccent"
+            android:src="@drawable/dot"/>
+    </item>
+</layer-list>

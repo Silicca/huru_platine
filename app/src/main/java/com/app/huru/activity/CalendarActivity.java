@@ -2,6 +2,7 @@ package com.app.huru.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -43,8 +44,6 @@ public class CalendarActivity extends AppCompatActivity implements ActivityGUI {
     private List<Note> notes;
 
     private TextView selectedDate;
-
-    public static final int ADD_NOTE = 1;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -116,9 +115,9 @@ public class CalendarActivity extends AppCompatActivity implements ActivityGUI {
 
         this.recyclerView.setAdapter(this.noteViewAdapter);
 
-        /**A SUPPRIMER, JUSTE POUR TESTER*/
-
         this.updateNotesList();
+
+        this.updateCalendarHighlightedDays();
     }
 
     @Override
@@ -127,6 +126,7 @@ public class CalendarActivity extends AppCompatActivity implements ActivityGUI {
 
         this.updateNotesList();
 
+        this.updateCalendarHighlightedDays();
     }
 
     /**
@@ -138,9 +138,27 @@ public class CalendarActivity extends AppCompatActivity implements ActivityGUI {
 
         this.notes = this.noteService.getNotesByDate(date);
 
-        List<Calendar> calendars = new ArrayList<>();
-        calendar.setHighlightedDays(calendars);
-
         this.noteViewAdapter.updateDataSet(notes);
+
+
+    }
+
+    private void updateCalendarHighlightedDays(){
+
+        List<EventDay> events = new ArrayList<>();
+
+        List<Note> notes = this.noteService.getAllNotes();
+
+        for(Note note : notes){
+
+            Calendar calendarDate = DateFormatter.stringToCalendar(note.getDate());
+
+            EventDay event =  new EventDay(calendarDate, R.drawable.date_event);
+
+            events.add(event);
+        }
+
+
+        this.calendar.setEvents(events);
     }
 }

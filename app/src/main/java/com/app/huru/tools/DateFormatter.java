@@ -3,6 +3,7 @@ package com.app.huru.tools;
 import com.applandeo.materialcalendarview.EventDay;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -22,4 +23,20 @@ public abstract class DateFormatter {
      public static String dateToString(Date date){
          return formatter.format(date);
      }
+
+     public static Calendar stringToCalendar(String date){
+
+         Calendar calendar = Calendar.getInstance();
+
+         String[] splited = date.split(" ");
+
+         int year = Integer.parseInt(splited[2]);
+         int month = Integer.parseInt(splited[1])-1;
+         int day = Integer.parseInt(splited[0]);
+
+         calendar.set(year, month, day);
+
+         return calendar;
+     }
+
 }
