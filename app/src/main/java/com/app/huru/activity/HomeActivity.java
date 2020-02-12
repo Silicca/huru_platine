@@ -1,6 +1,7 @@
 package com.app.huru.activity;
 
 import android.os.Bundle;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -9,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.app.huru.R;
 import com.app.huru.activity.fragment.FragmentAdapter;
+import com.google.android.material.tabs.TabLayout;
 
 /**
  * Activité principale de l'application
@@ -18,6 +20,8 @@ public class HomeActivity extends AppCompatActivity implements ActivityGUI{
     private TextView usernameView;
 
     private ViewPager viewPager;
+
+    private TabLayout tabLayout;
 
     private static final int NUMBER_OF_PAGES = 5;
 
@@ -32,15 +36,19 @@ public class HomeActivity extends AppCompatActivity implements ActivityGUI{
     @Override
     public void setupGUI() {
 
+        this.tabLayout = findViewById(R.id.tabLayout);
+
         this.usernameView = findViewById(R.id.homepage_username);
 
         String username = getIntent().getExtras().getString("username");
 
-        this.usernameView.setText("Bonjour "+username+" ! Voici un récapitulatif de ta journée.");
+        this.usernameView.setText("Bonjour "+username+" !");
 
         this.viewPager = findViewById(R.id.home_viewpager);
 
         this.viewPager.setAdapter(new FragmentAdapter(this.getSupportFragmentManager(), NUMBER_OF_PAGES));
 
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 }

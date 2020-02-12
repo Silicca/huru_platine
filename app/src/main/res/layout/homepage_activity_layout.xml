@@ -51,31 +51,32 @@
         android:layout_height="match_parent" >
 
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home" />
+                android:icon="@drawable/content" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hobbies" />
+                android:text="Hobbie" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Activities" />
+                android:text="Activité" />
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mood" />
+                android:text="Humeur" />
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stats" />
+                android:text="Stat" />
         </com.google.android.material.tabs.TabLayout>
     </androidx.viewpager.widget.ViewPager>
 </LinearLayout>

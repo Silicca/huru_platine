@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    android:padding="8dp"
+    android:layout_marginTop="20px"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/moodImage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+
+            app:srcCompat="@drawable/content" />
+
+        <TextView
+            android:id="@+id/moodText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:layout_marginLeft="80px"
+            android:fontFamily="@font/aileron_thin"
+            android:text="Content" />
+
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_marginTop="20px"
+        app:srcCompat="@color/details" />
 </LinearLayout>
