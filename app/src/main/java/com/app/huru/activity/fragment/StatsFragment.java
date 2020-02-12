@@ -1,10 +1,14 @@
 package com.app.huru.activity.fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,14 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.app.huru.R;
 import com.app.huru.activity.ActivityGUI;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.util.ArrayList;
 
 
 /**
@@ -29,6 +26,8 @@ public class StatsFragment extends Fragment implements ActivityGUI {
 
     private int layout;
     private View parentView;
+
+    private WebView webview;
 
     public StatsFragment(){
         super();
@@ -41,11 +40,25 @@ public class StatsFragment extends Fragment implements ActivityGUI {
                              Bundle savedInstanceState) {
 
         this.parentView = inflater.inflate(this.layout, container, false);
+        webview = this.parentView.findViewById(R.id.chartView);
 
-        setupGUI();
+        webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+
+        webview.getSettings().setJavaScriptEnabled(true);
+
+        webview.addJavascriptInterface(new WebAppInterface(this.getContext()), "Android");
+        webview.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+
+        webview.getSettings().setLoadWithOverviewMode(true);
+
+        webview.loadUrl("file:///android_asset/chart.html");
 
         return this.parentView;
     }
+
+
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,28 +78,41 @@ public class StatsFragment extends Fragment implements ActivityGUI {
 
     @Override
     public void setupGUI() {
-        PieChart pieChart = this.parentView.findViewById(R.id.piechart);
-        ArrayList<PieEntry> NoOfEmp = new ArrayList();
+    }
 
-        NoOfEmp.add(new PieEntry(945f, 0));
-        NoOfEmp.add(new PieEntry(1040f, 1));
-        NoOfEmp.add(new PieEntry(1133f, 2));
-        NoOfEmp.add(new PieEntry(1240f, 3));
-        NoOfEmp.add(new PieEntry(1369f, 4));
-        NoOfEmp.add(new PieEntry(1487f, 5));
-        NoOfEmp.add(new PieEntry(1501f, 6));
-        NoOfEmp.add(new PieEntry(1645f, 7));
-        NoOfEmp.add(new PieEntry(1578f, 8));
-        NoOfEmp.add(new PieEntry(10000f, 9));
-        PieDataSet dataSet = new PieDataSet(NoOfEmp,"");
-        PieData data = new PieData(dataSet);
+    public class WebAppInterface {
+       private Context context;
 
-        pieChart.setData(data);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.getLegend().setEnabled(false);
-        dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+        /** Instantiate the interface and set the context */
+        WebAppInterface(Context context) {
+            this.context = context;
+        }
 
-        pieChart.animateXY(2000, 2000);
+        @JavascriptInterface
+        public int getNum1() {
+            return 20;
+        }
 
+        @JavascriptInterface
+        public int getNum2() {
+            return 20;
+        }
+
+        @JavascriptInterface
+        public int getNum3() {
+            return 20;
+        }
+
+        @JavascriptInterface
+        public int getNum4() {
+            return 20;
+        }
+
+        @JavascriptInterface
+        public int getNum5() {
+            return 40;
+        }
     }
 }
+
+
