@@ -46,9 +46,8 @@ public class StatsFragment extends Fragment implements ActivityGUI {
 
         webview.getSettings().setJavaScriptEnabled(true);
 
-        webview.addJavascriptInterface(new WebAppInterface(this.getContext()), "Android");
+        webview.addJavascriptInterface(new WebAppStatsInterface(this.getContext()), "Android");
         webview.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
-
         webview.getSettings().setLoadWithOverviewMode(true);
 
         webview.loadUrl("file:///android_asset/chart.html");
@@ -80,11 +79,15 @@ public class StatsFragment extends Fragment implements ActivityGUI {
     public void setupGUI() {
     }
 
-    public class WebAppInterface {
+    /**
+     * Classe utilisée pour communiquer avec la webview des statistiques
+     * */
+    private class WebAppStatsInterface {
+
        private Context context;
 
-        /** Instantiate the interface and set the context */
-        WebAppInterface(Context context) {
+
+        public WebAppStatsInterface(Context context) {
             this.context = context;
         }
 
@@ -95,7 +98,7 @@ public class StatsFragment extends Fragment implements ActivityGUI {
 
         @JavascriptInterface
         public int getNum2() {
-            return 20;
+            return 10;
         }
 
         @JavascriptInterface
@@ -105,7 +108,7 @@ public class StatsFragment extends Fragment implements ActivityGUI {
 
         @JavascriptInterface
         public int getNum4() {
-            return 20;
+            return 60;
         }
 
         @JavascriptInterface
