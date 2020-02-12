@@ -44,7 +44,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
                 break;
             case 3:
 
-                fragment = new HomeFragment();
+                fragment = new MoodFragment();
 
                 break;
             case 4:
