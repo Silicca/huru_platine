@@ -2,7 +2,6 @@ package com.app.huru.dao;
 
 import com.app.huru.model.Note;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**

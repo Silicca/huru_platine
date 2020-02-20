@@ -4,6 +4,8 @@ package com.app.huru.model;
  * */
 public class Mood {
 
+    private int id;
+
     private String moodName;
 
     public Mood(){
@@ -22,4 +24,11 @@ public class Mood {
         this.moodName = moodName;
     }
 
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public int getId(){
+        return this.id;
+    }
 }

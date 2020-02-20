@@ -26,6 +26,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_NAME_USERS = "users";
     public static final String TABLE_NAME_NOTES = "notes";
     public static final String TABLE_NAME_HOBBIES = "hobbies";
+    public static final String TABLE_NAME_MOODS = "moods";
 
     /**
      * @param context objet Context à utiliser pour le SQLiteOpenHelper
@@ -59,6 +60,8 @@ public class Database extends SQLiteOpenHelper {
         String createTableHobbies = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_HOBBIES+
                 "( id INTEGER PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL);";
 
+        String createTableMoods = "CREATE TABLE IF NOT EXISTS "+TABLE_NAME_MOODS+
+                "(id INTEGER PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL);";
         /**
          * Création des hobbies de base proposés par l'application
          */
@@ -70,6 +73,8 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(createTableUsers);
         db.execSQL(createTableNotes);
         db.execSQL(createTableHobbies);
+        db.execSQL(createTableMoods);
+
         db.execSQL(insertIntoTableHobbies1);
         db.execSQL(insertIntoTableHobbies2);
         db.execSQL(insertIntoTableHobbies3);
@@ -83,7 +88,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_NOTES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_HOBBIES);
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_MOODS);
         onCreate(db);
     }
 
