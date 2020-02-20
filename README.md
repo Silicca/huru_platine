@@ -15,10 +15,10 @@ Application Android de suivi d'humeur et d'accompagnement quotidien.
 
 ### A FAIRE ###
 
-* Mettre en place les fragments Pour les hobbie, activités, humeur et stats ( en suivant le même principe que HomeFragment)
+* Faire les icones manquantes (icone pour les fragments, avatar et settings)
 
-* Faire les icones pour les différents fragments (La petite maison, le coeur, le bonhomme, le smiley et les stats)
+* Corriger la modif des hobbies
 
-* Faire les icones pour les settings et l'avatar en haut
+* Faire la partie stats
 
-* Implémenter le calendrier et le système de notes pour dans des nouvelles activités
+* Verifier les champs lors des modifs
