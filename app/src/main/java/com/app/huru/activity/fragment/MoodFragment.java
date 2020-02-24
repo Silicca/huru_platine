@@ -16,6 +16,7 @@ import com.app.huru.R;
 import com.app.huru.activity.ActivityGUI;
 import com.app.huru.activity.recyclerview.MoodViewAdapter;
 import com.app.huru.model.Mood;
+import com.app.huru.service.MoodService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,8 @@ public class MoodFragment extends Fragment implements ActivityGUI {
 
     private MoodViewAdapter moodViewAdapter;
 
+    private MoodService moodService;
+
     private List<Mood> moods;
 
     public MoodFragment(){
@@ -40,11 +43,6 @@ public class MoodFragment extends Fragment implements ActivityGUI {
         this.layout = R.layout.mood_fragment;
         this.moods = new ArrayList<>();
 
-        moods.add(new Mood("Content(e)"));
-        moods.add(new Mood("Triste"));
-        moods.add(new Mood("En colère"));
-        moods.add(new Mood("Stressé(e)"));
-        moods.add(new Mood("Fatigué(e)"));
     }
 
     @Nullable
@@ -52,7 +50,11 @@ public class MoodFragment extends Fragment implements ActivityGUI {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         this.parentView = inflater.inflate(this.layout, container, false);
+
+        this.moodService = new MoodService(this.parentView.getContext());
+
         this.setupGUI();
+
         return this.parentView;
     }
     @Override
@@ -69,6 +71,8 @@ public class MoodFragment extends Fragment implements ActivityGUI {
         this.recyclerView.setAdapter(this.moodViewAdapter);
 
         this.moodViewAdapter.updateDataSet(this.moods);
+
+        this.updateMoodsList();
     }
 
     @Override
@@ -86,5 +90,10 @@ public class MoodFragment extends Fragment implements ActivityGUI {
         super.onStart();
     }
 
+    private void updateMoodsList(){
 
+        this.moods.clear();
+        this.moods = this.moodService.getAllMoods();
+        this.moodViewAdapter.updateDataSet(this.moods);
+    }
 }

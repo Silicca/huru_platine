@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import com.app.huru.model.Mood;
+
 /**
  *
  * Super classe utilisée par les implémentations des différents DAO.
@@ -68,7 +71,16 @@ public class Database extends SQLiteOpenHelper {
         String insertIntoTableHobbies1 = "INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('0', 'Dessin');";
         String insertIntoTableHobbies2 = "INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('1', 'Musique');";
         String insertIntoTableHobbies3 = "INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('2', 'Photographie');";
+        String insertIntoTableHobbies4 = "INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('3', 'Cinéma');";
 
+        /**
+         * Création des humeurs proposées par l'application
+         * */
+        String insertIntoTableMood1 = "INSERT INTO "+ TABLE_NAME_MOODS+ "(id,name) VALUES('0', 'Content(e)');";
+        String insertIntoTableMood2 = "INSERT INTO "+ TABLE_NAME_MOODS+ "(id,name) VALUES('1', 'Triste');";
+        String insertIntoTableMood3 = "INSERT INTO "+ TABLE_NAME_MOODS+ "(id,name) VALUES('2', 'En colère');";
+        String insertIntoTableMood4 = "INSERT INTO "+ TABLE_NAME_MOODS+ "(id,name) VALUES('3', 'Stressé(e)');";
+        String insertIntoTableMood5 = "INSERT INTO "+ TABLE_NAME_MOODS+ "(id,name) VALUES('4', 'Fatigué(e)');";
 
         db.execSQL(createTableUsers);
         db.execSQL(createTableNotes);
@@ -78,6 +90,14 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(insertIntoTableHobbies1);
         db.execSQL(insertIntoTableHobbies2);
         db.execSQL(insertIntoTableHobbies3);
+        db.execSQL(insertIntoTableHobbies4);
+
+        db.execSQL(insertIntoTableMood1);
+        db.execSQL(insertIntoTableMood2);
+        db.execSQL(insertIntoTableMood3);
+        db.execSQL(insertIntoTableMood4);
+        db.execSQL(insertIntoTableMood5);
+
     }
     /**
      * Si la base de données change, nouvelle création des tables
