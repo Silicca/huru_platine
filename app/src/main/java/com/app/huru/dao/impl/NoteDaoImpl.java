@@ -19,11 +19,7 @@ public class NoteDaoImpl implements NoteDao {
     public NoteDaoImpl(Database db){
         this.db = db;
     }
-    /**
-     * Création de la table notes
-    */
 
-    @Override
     public List<Note> getAll() {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_NOTES;
@@ -41,7 +37,7 @@ public class NoteDaoImpl implements NoteDao {
             do {
                 Note note = new Note();
 
-                note.setId(Integer.parseInt(cursor.getString(0)));
+                note.setId(cursor.getInt(0));
 
                 note.setDate(cursor.getString(1));
 
@@ -80,7 +76,7 @@ public class NoteDaoImpl implements NoteDao {
 
                 Note note = new Note();
 
-                note.setId(Integer.parseInt(cursor.getString(0)));
+                note.setId(cursor.getInt(0));
 
                 note.setDate(cursor.getString(1));
 
@@ -160,7 +156,7 @@ public class NoteDaoImpl implements NoteDao {
 
             do {
 
-                note.setId(Integer.parseInt(cursor.getString(0)));
+                note.setId(cursor.getInt(0));
 
                 note.setDate(cursor.getString(1));
 

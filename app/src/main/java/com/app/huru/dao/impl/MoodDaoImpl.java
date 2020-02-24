@@ -32,7 +32,7 @@ public class MoodDaoImpl implements MoodDao {
 
         if (cursor.moveToFirst()){
 
-            mood.setId(Integer.parseInt(cursor.getString(0)));
+            mood.setId(cursor.getInt(0));
 
             mood.setMoodName(cursor.getString(1));
 
@@ -74,7 +74,7 @@ public class MoodDaoImpl implements MoodDao {
             do {
                 Mood mood = new Mood();
 
-                mood.setId(Integer.parseInt(cursor.getString(0)));
+                mood.setId(cursor.getInt(0));
 
                 mood.setMoodName(cursor.getString(1));
 

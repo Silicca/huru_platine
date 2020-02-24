@@ -41,7 +41,7 @@ public class HobbieDaoImpl implements HobbieDao {
             do {
                 Hobbie hobbie = new Hobbie();
 
-                hobbie.setId(Integer.parseInt(cursor.getString(0)));
+                hobbie.setId(cursor.getInt(0));
 
                 hobbie.setName(cursor.getString(1));
 
@@ -78,6 +78,7 @@ public class HobbieDaoImpl implements HobbieDao {
 
     @Override
     public Hobbie get(Integer hobbieId) {
+
         String sql = "SELECT * FROM " + Database.TABLE_NAME_HOBBIES+" WHERE id="+hobbieId;
 
         SQLiteDatabase db = this.db.getWritableDatabase();
@@ -89,7 +90,7 @@ public class HobbieDaoImpl implements HobbieDao {
 
             do {
 
-                hobbie.setId(Integer.parseInt(cursor.getString(0)));
+                hobbie.setId(cursor.getInt(0));
 
                 hobbie.setName(cursor.getString(1));
 

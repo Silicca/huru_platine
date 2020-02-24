@@ -34,7 +34,7 @@ public class UserDaoImpl implements UserDao {
 
             do {
 
-                user.setId(Integer.parseInt(cursor.getString(0)));
+                user.setId(cursor.getInt(0));
 
                 user.setName(cursor.getString(1));
 

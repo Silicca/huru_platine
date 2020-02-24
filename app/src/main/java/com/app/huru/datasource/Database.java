@@ -10,7 +10,7 @@ import com.app.huru.model.Mood;
 
 /**
  *
- * Super classe utilisée par les implémentations des différents DAO.
+ * Singleton utilisé par les implémentations des différents DAO.
  * Permet aux DAO d'accèder aux méthodes de SQLiteOpenHelper.
  *
  * */
@@ -30,6 +30,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_NAME_NOTES = "notes";
     public static final String TABLE_NAME_HOBBIES = "hobbies";
     public static final String TABLE_NAME_MOODS = "moods";
+    public static final String TABLE_NAME_STATS = "stats";
 
     /**
      * @param context objet Context à utiliser pour le SQLiteOpenHelper
@@ -65,6 +66,9 @@ public class Database extends SQLiteOpenHelper {
 
         String createTableMoods = "CREATE TABLE IF NOT EXISTS "+TABLE_NAME_MOODS+
                 "(id INTEGER PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL);";
+
+        String createTableStats = "CREATE TABLE IF NOT EXISTS "+TABLE_NAME_STATS+
+                "(id INTEGER PRIMARY KEY NOT NULL, moodId INTEGER NOT NULL, date VARCHAR(255) NOT NULL);";
         /**
          * Création des hobbies de base proposés par l'application
          */
@@ -82,11 +86,18 @@ public class Database extends SQLiteOpenHelper {
         String insertIntoTableMood4 = "INSERT INTO "+ TABLE_NAME_MOODS+ "(id,name) VALUES('3', 'Stressé(e)');";
         String insertIntoTableMood5 = "INSERT INTO "+ TABLE_NAME_MOODS+ "(id,name) VALUES('4', 'Fatigué(e)');";
 
+        /**
+         * Création des tables
+         * */
         db.execSQL(createTableUsers);
         db.execSQL(createTableNotes);
         db.execSQL(createTableHobbies);
         db.execSQL(createTableMoods);
+        db.execSQL(createTableStats);
 
+        /**
+         * Insertion des données
+         * */
         db.execSQL(insertIntoTableHobbies1);
         db.execSQL(insertIntoTableHobbies2);
         db.execSQL(insertIntoTableHobbies3);
@@ -109,6 +120,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_NOTES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_HOBBIES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_MOODS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_STATS);
         onCreate(db);
     }
 
