@@ -19,6 +19,6 @@ Application Android de suivi d'humeur et d'accompagnement quotidien.
 
 * Corriger la modif des hobbies
 
-* Faire la partie stats
+* Faire la partie stats -> afficher l'humeur en fonction de celle récupérée (voir HomeFragment"
 
 * Verifier les champs lors des modifs
