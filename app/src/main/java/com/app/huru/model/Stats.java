@@ -11,6 +11,8 @@ public class Stats {
 
     private String date;
 
+    private Mood mood;
+
     public Stats(){
         //constructeur vide
     }
@@ -37,5 +39,13 @@ public class Stats {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public void setMood(Mood mood){
+        this.mood = mood;
+    }
+
+    public Mood getMood(){
+        return this.mood;
     }
 }

@@ -1,6 +1,5 @@
 package com.app.huru.activity.recyclerview;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,13 +9,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.huru.R;
 import com.app.huru.model.Mood;
+import com.app.huru.model.Stats;
+import com.app.huru.service.StatsService;
+import com.app.huru.tools.DateFormatter;
+
+import java.util.Date;
 
 public class MoodViewHolder extends RecyclerView.ViewHolder {
+
+    private int moodId;
 
     private TextView mood;
     private ImageView moodImage;
 
     private View view;
+
+    private StatsService statsService;
 
     public MoodViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -25,7 +33,21 @@ public class MoodViewHolder extends RecyclerView.ViewHolder {
 
         this.mood = this.view.findViewById(R.id.moodText);
 
-        this.moodImage = this.view.findViewById(R.id.moodImage);
+        this.moodImage = this.view.findViewById(R.id.actualMoodImage);
+
+        this.statsService = new StatsService(this.view.getContext());
+
+        this.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Stats stats = new Stats();
+                stats.setMoodId(moodId);
+                stats.setDate(DateFormatter.dateToString(new Date()));
+
+                statsService.saveStats(stats);
+            }
+        });
     }
 
     /**
@@ -34,6 +56,7 @@ public class MoodViewHolder extends RecyclerView.ViewHolder {
     public void updateView(Mood model){
 
         this.mood.setText(model.getMoodName());
+        this.moodId = model.getId();
 
         int moodImageDrawable = 0;
 

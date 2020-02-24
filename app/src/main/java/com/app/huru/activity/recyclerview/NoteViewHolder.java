@@ -38,7 +38,7 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
         this.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("note", title.getText().toString());
+
                 Intent intent = new Intent(v.getContext(), NoteDetailsActivity.class);
                 intent.putExtra("noteId", id);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

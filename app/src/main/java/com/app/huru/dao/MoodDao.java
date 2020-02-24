@@ -9,6 +9,8 @@ import java.util.List;
  * */
 public interface MoodDao {
 
+    Mood get(int id);
+
     Mood getByName(String name);
 
     void save(Mood mood);

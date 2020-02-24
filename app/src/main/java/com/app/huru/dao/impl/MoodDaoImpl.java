@@ -21,6 +21,29 @@ public class MoodDaoImpl implements MoodDao {
     }
 
     @Override
+    public Mood get(int id) {
+
+        String sql = "SELECT  * FROM " + Database.TABLE_NAME_MOODS+" WHERE id='"+id+"'";
+
+        SQLiteDatabase db = this.db.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        Mood mood = new Mood();
+
+        if (cursor.moveToFirst()){
+
+            mood.setId(cursor.getInt(0));
+
+            mood.setMoodName(cursor.getString(1));
+
+        }
+
+        db.close();
+
+        return mood;
+    }
+
+    @Override
     public Mood getByName(String name) {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_MOODS+" WHERE name='"+name+"'";

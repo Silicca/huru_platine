@@ -3,9 +3,12 @@ package com.app.huru.activity.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,8 +20,11 @@ import com.app.huru.R;
 import com.app.huru.activity.ActivityGUI;
 import com.app.huru.activity.CalendarActivity;
 import com.app.huru.activity.recyclerview.NoteViewAdapter;
+import com.app.huru.model.Mood;
 import com.app.huru.model.Note;
+import com.app.huru.model.Stats;
 import com.app.huru.service.NoteService;
+import com.app.huru.service.StatsService;
 import com.app.huru.tools.DateFormatter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -39,7 +45,12 @@ public class HomeFragment extends Fragment implements ActivityGUI {
     private NoteViewAdapter noteViewAdapter;
     private FloatingActionButton calendarButtonPlus;
 
+    private TextView actualMoodText;
+    private ImageView actualMoodImage;
+
     private NoteService noteService;
+    private StatsService statsService;
+
 
     private List<Note> notes;
 
@@ -56,6 +67,7 @@ public class HomeFragment extends Fragment implements ActivityGUI {
         this.parentView = inflater.inflate(this.layout, container, false);
 
         this.noteService = new NoteService(this.parentView.getContext());
+        this.statsService = new StatsService(this.parentView.getContext());
 
         this.notes = new ArrayList<>();
 
@@ -81,6 +93,9 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
     @Override
     public void setupGUI() {
+
+        this.actualMoodText = this.parentView.findViewById(R.id.actualMoodText);
+        this.actualMoodImage = this.parentView.findViewById(R.id.actualMoodImage);
 
         //BOUTON
         this.calendarButtonPlus = this.parentView.findViewById(R.id.calendarButtonPlus);
@@ -108,12 +123,15 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
         this.updateNotesList();
 
+        this.updateActualMood();
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
         this.updateNotesList();
+        this.updateActualMood();
     }
 
     /**
@@ -126,5 +144,14 @@ public class HomeFragment extends Fragment implements ActivityGUI {
         this.notes = this.noteService.getNotesByDate(DateFormatter.dateToString(new Date()));
 
         this.noteViewAdapter.updateDataSet(notes);
+    }
+
+    private void updateActualMood(){
+
+        Mood actualMood = new Mood();
+
+        List<Stats> lastStats = this.statsService.getAllStats();
+        if(!lastStats.isEmpty())
+            Log.v("s", lastStats.get(lastStats.size()-1).getMood().getMoodName());
     }
 }
