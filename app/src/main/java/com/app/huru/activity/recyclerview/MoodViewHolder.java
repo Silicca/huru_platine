@@ -12,6 +12,7 @@ import com.app.huru.model.Mood;
 import com.app.huru.model.Stats;
 import com.app.huru.service.StatsService;
 import com.app.huru.tools.DateFormatter;
+import com.app.huru.tools.DrawableMoodLoader;
 
 import java.util.Date;
 
@@ -58,26 +59,7 @@ public class MoodViewHolder extends RecyclerView.ViewHolder {
         this.mood.setText(model.getMoodName());
         this.moodId = model.getId();
 
-        int moodImageDrawable = 0;
-
-        switch (model.getMoodName()){
-            case "Content(e)":
-                moodImageDrawable = R.drawable.content;
-            break;
-            case "Triste":
-                moodImageDrawable = R.drawable.triste;
-            break;
-            case "Fatigué(e)":
-                moodImageDrawable = R.drawable.fatigue;
-            break;
-            case "Stressé(e)":
-                moodImageDrawable = R.drawable.stress;
-            break;
-            case "En colère":
-                moodImageDrawable = R.drawable.colere;
-            break;
-        }
-        this.moodImage.setImageResource(moodImageDrawable);
+        this.moodImage.setImageResource(DrawableMoodLoader.load(model));
 
     }
 

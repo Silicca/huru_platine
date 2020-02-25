@@ -26,6 +26,7 @@ import com.app.huru.model.Stats;
 import com.app.huru.service.NoteService;
 import com.app.huru.service.StatsService;
 import com.app.huru.tools.DateFormatter;
+import com.app.huru.tools.DrawableMoodLoader;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -151,7 +152,17 @@ public class HomeFragment extends Fragment implements ActivityGUI {
         Mood actualMood = new Mood();
 
         List<Stats> lastStats = this.statsService.getAllStats();
-        if(!lastStats.isEmpty())
-            Log.v("s", lastStats.get(lastStats.size()-1).getMood().getMoodName());
+
+        if(!lastStats.isEmpty()){
+
+            actualMood = lastStats.get(lastStats.size()-1).getMood();
+
+            actualMoodImage.setImageResource(DrawableMoodLoader.load(actualMood));
+            actualMoodText.setText(actualMood.getMoodName());
+        }else{
+            actualMoodImage.setVisibility(View.GONE);
+            actualMoodText.setText("Non précisé");
+        }
+
     }
 }
