@@ -61,4 +61,5 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return this.numberOfPages;
     }
+
 }

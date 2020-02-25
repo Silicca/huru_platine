@@ -129,12 +129,19 @@ public class HomeFragment extends Fragment implements ActivityGUI {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        this.updateNotesList();
-        this.updateActualMood();
-    }
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
 
+        if(menuVisible){
+
+            if(this.notes != null){
+
+                this.updateNotesList();
+                this.updateActualMood();
+            }
+
+        }
+    }
     /**
      * Met à jour la liste des notes à afficher
      * */

@@ -45,7 +45,6 @@ public class HomeActivity extends AppCompatActivity implements ActivityGUI{
         this.usernameView.setText("Bonjour "+username+" !");
 
         this.viewPager = findViewById(R.id.home_viewpager);
-
         this.viewPager.setAdapter(new FragmentAdapter(this.getSupportFragmentManager(), NUMBER_OF_PAGES));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
