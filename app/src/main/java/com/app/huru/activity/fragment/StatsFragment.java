@@ -1,9 +1,7 @@
 package com.app.huru.activity.fragment;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,6 @@ import androidx.fragment.app.Fragment;
 
 import com.app.huru.R;
 import com.app.huru.activity.ActivityGUI;
-import com.app.huru.model.Mood;
 import com.app.huru.model.Stats;
 import com.app.huru.service.MoodService;
 import com.app.huru.service.StatsService;
@@ -68,11 +65,7 @@ public class StatsFragment extends Fragment implements ActivityGUI {
 
         return this.parentView;
     }
-
-
-
-
-
+    
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
