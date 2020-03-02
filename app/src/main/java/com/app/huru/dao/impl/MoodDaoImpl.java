@@ -25,7 +25,7 @@ public class MoodDaoImpl implements MoodDao {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_MOODS+" WHERE id='"+id+"'";
 
-        SQLiteDatabase db = this.db.getWritableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
         Mood mood = new Mood();
@@ -37,8 +37,6 @@ public class MoodDaoImpl implements MoodDao {
             mood.setMoodName(cursor.getString(1));
 
         }
-
-        db.close();
 
         return mood;
     }
@@ -48,7 +46,7 @@ public class MoodDaoImpl implements MoodDao {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_MOODS+" WHERE name='"+name+"'";
 
-        SQLiteDatabase db = this.db.getWritableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
         Mood mood = new Mood();
@@ -60,8 +58,6 @@ public class MoodDaoImpl implements MoodDao {
             mood.setMoodName(cursor.getString(1));
 
         }
-
-        db.close();
 
         return mood;
     }
@@ -77,8 +73,6 @@ public class MoodDaoImpl implements MoodDao {
 
         db.insert(Database.TABLE_NAME_MOODS, null, values);
 
-        db.close();
-
     }
 
     @Override
@@ -86,7 +80,7 @@ public class MoodDaoImpl implements MoodDao {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_MOODS;
 
-        SQLiteDatabase db = this.db.getWritableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(sql, null);
 
@@ -105,8 +99,6 @@ public class MoodDaoImpl implements MoodDao {
 
             } while (cursor.moveToNext());
         }
-
-        db.close();
 
         return moods;
     }

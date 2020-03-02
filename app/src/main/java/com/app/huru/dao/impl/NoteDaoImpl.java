@@ -24,7 +24,7 @@ public class NoteDaoImpl implements NoteDao {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_NOTES;
 
-        SQLiteDatabase db = this.db.getWritableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(sql, null);
 
@@ -54,7 +54,6 @@ public class NoteDaoImpl implements NoteDao {
             } while (cursor.moveToNext());
         }
 
-        db.close();
 
         return notes;
     }
@@ -64,7 +63,7 @@ public class NoteDaoImpl implements NoteDao {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_NOTES+" WHERE date='"+date+"'";
 
-        SQLiteDatabase db = this.db.getWritableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
         List<Note> notes = new ArrayList<>();
@@ -92,8 +91,6 @@ public class NoteDaoImpl implements NoteDao {
 
             } while (cursor.moveToNext());
         }
-
-        db.close();
 
         return notes;
     }
@@ -112,7 +109,6 @@ public class NoteDaoImpl implements NoteDao {
 
         db.insert(Database.TABLE_NAME_NOTES, null, values);
 
-        db.close();
     }
 
     @Override
@@ -122,7 +118,6 @@ public class NoteDaoImpl implements NoteDao {
 
         db.delete(Database.TABLE_NAME_NOTES, "id=?", new String[]{String.valueOf(noteId)});
 
-        db.close();
     }
 
     @Override
@@ -140,7 +135,6 @@ public class NoteDaoImpl implements NoteDao {
 
         db.update(Database.TABLE_NAME_NOTES, values, "id=?", new String[]{String.valueOf(note.getId())});
 
-        db.close();
     }
 
     @Override
@@ -170,7 +164,6 @@ public class NoteDaoImpl implements NoteDao {
 
             } while (cursor.moveToNext());
         }
-        db.close();
 
         return note;
     }

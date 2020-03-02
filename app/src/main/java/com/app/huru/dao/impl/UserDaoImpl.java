@@ -25,7 +25,7 @@ public class UserDaoImpl implements UserDao {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_USERS;
 
-        SQLiteDatabase db = this.db.getWritableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
         User user = new User();
@@ -40,8 +40,6 @@ public class UserDaoImpl implements UserDao {
 
             } while (cursor.moveToNext());
         }
-
-        db.close();
 
         return user;
     }
@@ -60,7 +58,6 @@ public class UserDaoImpl implements UserDao {
 
         int count = cursor.getCount();
 
-        cursor.close();
 
         return count != 0;
     }
@@ -75,8 +72,6 @@ public class UserDaoImpl implements UserDao {
         values.put("name", user.getName());
 
         db.insert(Database.TABLE_NAME_USERS, null, values);
-
-        db.close();
 
     }
 }

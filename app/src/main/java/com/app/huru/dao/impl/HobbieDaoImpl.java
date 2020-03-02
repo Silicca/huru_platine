@@ -30,7 +30,7 @@ public class HobbieDaoImpl implements HobbieDao {
 
         String sql = "SELECT * FROM " + Database.TABLE_NAME_HOBBIES;
 
-        SQLiteDatabase db = this.db.getWritableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(sql, null);
 
@@ -63,7 +63,7 @@ public class HobbieDaoImpl implements HobbieDao {
 
         db.insert(Database.TABLE_NAME_HOBBIES, null, values);
 
-        db.close();
+
     }
 
     @Override
@@ -72,7 +72,6 @@ public class HobbieDaoImpl implements HobbieDao {
 
         db.delete(Database.TABLE_NAME_HOBBIES, "id=?", new String[]{String.valueOf(hobbieId)});
 
-        db.close();
     }
 
     @Override
@@ -86,7 +85,7 @@ public class HobbieDaoImpl implements HobbieDao {
 
         db.update(Database.TABLE_NAME_HOBBIES, values, "id=?", new String[]{String.valueOf(hobbie.getId())});
 
-        db.close();
+
     }
 
     @Override
@@ -94,7 +93,7 @@ public class HobbieDaoImpl implements HobbieDao {
 
         String sql = "SELECT * FROM " + Database.TABLE_NAME_HOBBIES+" WHERE id="+hobbieId;
 
-        SQLiteDatabase db = this.db.getWritableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
         Hobbie hobbie = new Hobbie();
@@ -109,6 +108,8 @@ public class HobbieDaoImpl implements HobbieDao {
 
             } while (cursor.moveToNext());
         }
+
+
 
         return hobbie;
     }

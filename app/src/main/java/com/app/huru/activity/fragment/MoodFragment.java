@@ -96,4 +96,8 @@ public class MoodFragment extends Fragment implements ActivityGUI {
         this.moods = this.moodService.getAllMoods();
         this.moodViewAdapter.updateDataSet(this.moods);
     }
+
+    private void updateMoodImage(){
+
+    }
 }

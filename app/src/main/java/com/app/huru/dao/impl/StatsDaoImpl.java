@@ -24,7 +24,7 @@ public class StatsDaoImpl implements StatsDao {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_STATS;
 
-        SQLiteDatabase db = this.db.getWritableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(sql, null);
 
@@ -46,8 +46,6 @@ public class StatsDaoImpl implements StatsDao {
 
             } while (cursor.moveToNext());
         }
-
-        db.close();
 
         return stats;
     }
@@ -57,7 +55,7 @@ public class StatsDaoImpl implements StatsDao {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_STATS+" WHERE date='"+date+"'";
 
-        SQLiteDatabase db = this.db.getWritableDatabase();
+        SQLiteDatabase db = this.db.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
         List<Stats> stats = new ArrayList<>();
@@ -78,8 +76,6 @@ public class StatsDaoImpl implements StatsDao {
 
             } while (cursor.moveToNext());
         }
-
-        db.close();
 
         return stats;
     }
@@ -95,8 +91,6 @@ public class StatsDaoImpl implements StatsDao {
         values.put("date", stats.getDate());
 
         db.insert(Database.TABLE_NAME_STATS, null, values);
-
-        db.close();
     }
 
     @Override
@@ -104,7 +98,5 @@ public class StatsDaoImpl implements StatsDao {
         SQLiteDatabase db = this.db.getWritableDatabase();
 
         db.delete(Database.TABLE_NAME_STATS, "id=?", new String[]{String.valueOf(statsId)});
-
-        db.close();
     }
 }

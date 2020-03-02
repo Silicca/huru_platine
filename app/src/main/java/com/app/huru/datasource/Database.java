@@ -124,4 +124,8 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    @Override
+    public synchronized void close() {
+        super.close();
+    }
 }
