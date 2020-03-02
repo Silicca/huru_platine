@@ -30,4 +30,13 @@ public class HobbieService {
     }
 
     public Hobbie getHobbie(Integer id){ return this.hobbieDao.get(id); }
+
+    public void updateHobbie(Hobbie hobbie){
+
+        this.hobbieDao.update(hobbie);
+    }
+
+    public void removeHobbie(Integer hobbieId){
+        this.hobbieDao.remove(hobbieId);
+    }
 }

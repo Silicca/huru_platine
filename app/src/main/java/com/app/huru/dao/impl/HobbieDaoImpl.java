@@ -67,13 +67,26 @@ public class HobbieDaoImpl implements HobbieDao {
     }
 
     @Override
-    public void remove(Integer noteId) {
+    public void remove(Integer hobbieId) {
+        SQLiteDatabase db = this.db.getWritableDatabase();
 
+        db.delete(Database.TABLE_NAME_HOBBIES, "id=?", new String[]{String.valueOf(hobbieId)});
+
+        db.close();
     }
 
     @Override
-    public void update(Hobbie note) {
+    public void update(Hobbie hobbie) {
 
+        ContentValues values = new ContentValues();
+
+        values.put("name", hobbie.getName());
+
+        SQLiteDatabase db = this.db.getWritableDatabase();
+
+        db.update(Database.TABLE_NAME_HOBBIES, values, "id=?", new String[]{String.valueOf(hobbie.getId())});
+
+        db.close();
     }
 
     @Override
