@@ -1,6 +1,8 @@
 <html>
 <head>
     <script type="text/javascript" src="file:///android_asset/Chart.js"></script>
+    <meta name="viewport" content="user-scalable=no"/>
+
 </head>
 <body>
     <canvas id="chart" style="width: 80%; height: 100%"></canvas>
@@ -31,7 +33,10 @@
                 animation: false,
                 scale: {
                     ticks: {
-                        callback: function() {return ""}
+                       beginAtZero: true,
+                       max: 100,
+                       min: 0,
+                       stepSize: 20
                     }
                 }
             }

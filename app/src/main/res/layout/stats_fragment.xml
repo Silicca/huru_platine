@@ -26,16 +26,67 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <WebView
             android:id="@+id/chartView"
-            android:layout_gravity="center"
-            android:layout_width="350dp"
-            android:layout_height="350dp">
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_gravity="center">
 
         </WebView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/weekButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/aileron_bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                android:layout_marginTop="50px"
+                android:text="7 jours" />
+
+            <Button
+                android:id="@+id/monthButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/aileron_bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                android:layout_marginTop="50px"
+                android:text="Ce mois-ci" />
+
+            <Button
+                android:id="@+id/totalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/aileron_bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                android:layout_marginTop="50px"
+                android:text="Tous" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

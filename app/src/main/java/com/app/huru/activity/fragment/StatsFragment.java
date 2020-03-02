@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +39,10 @@ public class StatsFragment extends Fragment implements ActivityGUI {
     private StatsService statsService;
     private MoodService moodService;
 
+    private Button weekButton;
+    private Button monthButton;
+    private Button totalButton;
+
     private boolean updateFragment = true;
 
     public StatsFragment(){
@@ -55,9 +60,9 @@ public class StatsFragment extends Fragment implements ActivityGUI {
         this.statsService = new StatsService(this.parentView.getContext());
         this.moodService = new MoodService(this.parentView.getContext());
 
-        webview = this.parentView.findViewById(R.id.chartView);
-
         this.updateFragment = true;
+
+        this.setupGUI();
 
         this.updateWebView();
 
@@ -86,6 +91,10 @@ public class StatsFragment extends Fragment implements ActivityGUI {
     @Override
     public void setupGUI() {
 
+        this.webview = this.parentView.findViewById(R.id.chartView);
+        this.weekButton = this.parentView.findViewById(R.id.weekButton);
+        this.monthButton = this.parentView.findViewById(R.id.monthButton);
+        this.totalButton = this.parentView.findViewById(R.id.totalButton);
     }
 
     private void updateWebView(){
