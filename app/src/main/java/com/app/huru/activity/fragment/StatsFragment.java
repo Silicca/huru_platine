@@ -2,6 +2,7 @@ package com.app.huru.activity.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,13 @@ import com.app.huru.activity.ActivityGUI;
 import com.app.huru.model.Stats;
 import com.app.huru.service.MoodService;
 import com.app.huru.service.StatsService;
+import com.app.huru.tools.DateFormatter;
+import com.google.android.material.snackbar.Snackbar;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -36,11 +43,11 @@ public class StatsFragment extends Fragment implements ActivityGUI {
     private StatsService statsService;
     private MoodService moodService;
 
-    private Button weekButton;
+    private Button dayButton;
     private Button monthButton;
     private Button totalButton;
 
-    private boolean updateFragment = true;
+    private String searchingDate;
 
     public StatsFragment(){
         super();
@@ -56,8 +63,7 @@ public class StatsFragment extends Fragment implements ActivityGUI {
 
         this.statsService = new StatsService(this.parentView.getContext());
         this.moodService = new MoodService(this.parentView.getContext());
-
-        this.updateFragment = true;
+        this.searchingDate = null;
 
         this.setupGUI();
 
@@ -65,7 +71,7 @@ public class StatsFragment extends Fragment implements ActivityGUI {
 
         return this.parentView;
     }
-    
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,9 +91,38 @@ public class StatsFragment extends Fragment implements ActivityGUI {
     public void setupGUI() {
 
         this.webview = this.parentView.findViewById(R.id.chartView);
-        this.weekButton = this.parentView.findViewById(R.id.weekButton);
+        this.dayButton = this.parentView.findViewById(R.id.dayButton);
         this.monthButton = this.parentView.findViewById(R.id.monthButton);
         this.totalButton = this.parentView.findViewById(R.id.totalButton);
+
+        this.dayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchingDate = DateFormatter.dateToString(new Date());
+                Snackbar.make(v, "Statistiques du jour.", 1000).show();
+                updateWebView();
+            }
+        });
+
+        this.monthButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String dateString = DateFormatter.dateToString(new Date());
+                searchingDate = dateString.substring(2, dateString.length());
+                Snackbar.make(v, "Statistiques du mois.", 1000).show();
+                updateWebView();
+            }
+        });
+
+        this.totalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchingDate = null;
+                Snackbar.make(v, "Statistiques globales.", 1000).show();
+                updateWebView();
+            }
+        });
     }
 
     private void updateWebView(){
@@ -110,7 +145,15 @@ public class StatsFragment extends Fragment implements ActivityGUI {
         int total = 0;
         int count = 0;
 
-        List<Stats> stats = this.statsService.getAllStats();
+        List<Stats> stats;
+
+        if(this.searchingDate == null){
+            stats = this.statsService.getAllStats();
+        }
+        else{
+            stats = this.statsService.getStatsByDate(this.searchingDate);
+        }
+
         total = stats.size();
 
         if(total == 0){
@@ -133,6 +176,7 @@ public class StatsFragment extends Fragment implements ActivityGUI {
     @Override
     public void setMenuVisibility(boolean menuVisible) {
         super.setMenuVisibility(menuVisible);
+
         if(menuVisible){
 
             if(this.webview != null) {

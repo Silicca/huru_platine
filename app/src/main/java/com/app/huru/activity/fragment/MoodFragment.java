@@ -2,6 +2,7 @@ package com.app.huru.activity.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,9 +96,5 @@ public class MoodFragment extends Fragment implements ActivityGUI {
         this.moods.clear();
         this.moods = this.moodService.getAllMoods();
         this.moodViewAdapter.updateDataSet(this.moods);
-    }
-
-    private void updateMoodImage(){
-
     }
 }

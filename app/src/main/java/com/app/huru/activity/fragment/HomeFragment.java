@@ -47,6 +47,7 @@ public class HomeFragment extends Fragment implements ActivityGUI {
     private FloatingActionButton calendarButtonPlus;
 
     private TextView actualMoodText;
+    private TextView noNoteMessage;
     private ImageView actualMoodImage;
 
     private NoteService noteService;
@@ -97,6 +98,8 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
         this.actualMoodText = this.parentView.findViewById(R.id.actualMoodText);
         this.actualMoodImage = this.parentView.findViewById(R.id.actualMoodImage);
+        this.noNoteMessage = this.parentView.findViewById(R.id.noNotesMessage);
+        this.noNoteMessage.setVisibility(View.GONE);
 
         //BOUTON
         this.calendarButtonPlus = this.parentView.findViewById(R.id.calendarButtonPlus);
@@ -142,6 +145,17 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(this.notes != null){
+
+            this.updateNotesList();
+            this.updateActualMood();
+        }
+    }
+
     /**
      * Met à jour la liste des notes à afficher
      * */
@@ -151,7 +165,20 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
         this.notes = this.noteService.getNotesByDate(DateFormatter.dateToString(new Date()));
 
+        if(this.notes.isEmpty()){
+
+            this.recyclerView.setVisibility(View.GONE);
+            this.noNoteMessage.setVisibility(View.VISIBLE);
+
+        }else{
+
+            this.recyclerView.setVisibility(View.VISIBLE);
+            this.noNoteMessage.setVisibility(View.GONE);
+            this.noteViewAdapter.updateDataSet(notes);
+        }
+
         this.noteViewAdapter.updateDataSet(notes);
+
     }
 
     private void updateActualMood(){

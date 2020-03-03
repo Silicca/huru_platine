@@ -53,7 +53,7 @@ public class StatsDaoImpl implements StatsDao {
     @Override
     public List<Stats> getByDate(String date) {
 
-        String sql = "SELECT  * FROM " + Database.TABLE_NAME_STATS+" WHERE date='"+date+"'";
+        String sql = "SELECT  * FROM " + Database.TABLE_NAME_STATS+" WHERE date LIKE '%"+date+"'";
 
         SQLiteDatabase db = this.db.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);

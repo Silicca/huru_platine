@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.app.huru.R;
 import com.app.huru.model.Note;
 import com.app.huru.service.NoteService;
+import com.google.android.material.snackbar.Snackbar;
 
 public class NoteDetailsActivity extends AppCompatActivity implements ActivityGUI {
 

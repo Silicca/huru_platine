@@ -13,6 +13,7 @@ import com.app.huru.model.Stats;
 import com.app.huru.service.StatsService;
 import com.app.huru.tools.DateFormatter;
 import com.app.huru.tools.DrawableMoodLoader;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Date;
 
@@ -47,6 +48,8 @@ public class MoodViewHolder extends RecyclerView.ViewHolder {
                 stats.setDate(DateFormatter.dateToString(new Date()));
 
                 statsService.saveStats(stats);
+
+                Snackbar.make(v, "Humeur mise à jour.", 1000).show();
             }
         });
     }
