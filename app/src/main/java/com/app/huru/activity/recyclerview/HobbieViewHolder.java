@@ -13,12 +13,12 @@ import com.app.huru.activity.HobbieDetailsActivity;
 import com.app.huru.model.Hobbie;
 
 /**
- * Représente un item à afficher dans la liste des notes du jour
+ * Représente un item à afficher dans la liste des hobbies
  * */
 public class HobbieViewHolder extends RecyclerView.ViewHolder {
 
     private int id;
-    private TextView name;
+    private TextView hobbieNameText;
 
     private View view;
 
@@ -27,12 +27,12 @@ public class HobbieViewHolder extends RecyclerView.ViewHolder {
 
         this.view = itemView;
 
-        this.name = itemView.findViewById(R.id.hobbieNameText);
+        this.hobbieNameText = itemView.findViewById(R.id.hobbieNameText);
 
         this.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("hobbie", name.getText().toString());
+                Log.v("hobbie", hobbieNameText.getText().toString());
                 Intent intent = new Intent(v.getContext(), HobbieDetailsActivity.class);
                 intent.putExtra("hobbieId", id);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -47,7 +47,7 @@ public class HobbieViewHolder extends RecyclerView.ViewHolder {
     public void updateView(Hobbie model){
 
         this.id = model.getId();
-        this.name.setText(model.getName());
+        this.hobbieNameText.setText(model.getName());
     }
 
     public View getView(){

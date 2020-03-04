@@ -40,7 +40,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
                 break;
             case 2:
 
-                fragment = new HomeFragment();
+                fragment = new ActivityFragment();
 
                 break;
             case 3:

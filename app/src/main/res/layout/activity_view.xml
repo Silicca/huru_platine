@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
-    android:orientation="vertical">
+>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,13 +14,13 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/hobbieNameText"
+            android:id="@+id/activityNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="30px"
             android:fontFamily="@font/aileron_bold"
-            android:text="Hobbie X" />
+            android:text="Activité X" />
     </LinearLayout>
 
     <ImageView
@@ -29,4 +30,5 @@
 
         android:layout_marginTop="20px"
         app:srcCompat="@color/details" />
+
 </LinearLayout>

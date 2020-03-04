@@ -4,6 +4,8 @@ package com.app.huru.model;
  * */
 public class Activity {
 
+    private int id;
+
     private String activityName;
 
     public Activity(){
@@ -22,5 +24,11 @@ public class Activity {
         this.activityName = activityName;
     }
 
+    public int getId(){
+        return this.id;
+    }
 
+    public void setId(int id){
+        this.id = id;
+    }
 }
