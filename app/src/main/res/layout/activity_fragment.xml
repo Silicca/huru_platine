@@ -33,8 +33,19 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/activityRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             />
+        <TextView
+
+            android:id="@+id/noActivitiesMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/aileron_thin"
+            android:textSize="16dp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"
+            android:text="Pas d'activités à proposer pour le moment." />
 
     </LinearLayout>
 

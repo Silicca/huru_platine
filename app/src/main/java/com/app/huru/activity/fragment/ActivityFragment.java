@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,7 @@ public class ActivityFragment extends Fragment implements ActivityGUI {
 
     private int layout;
     private View parentView;
+    private TextView noActivitiesMessage;
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -75,6 +77,8 @@ public class ActivityFragment extends Fragment implements ActivityGUI {
     @Override
     public void setupGUI() {
 
+        this.noActivitiesMessage = this.parentView.findViewById(R.id.noActivitiesMessage);
+
         this.recyclerView  = this.parentView.findViewById(R.id.activityRecyclerView);
 
         this.layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
@@ -120,6 +124,18 @@ public class ActivityFragment extends Fragment implements ActivityGUI {
 
         this.activities = this.activityService.getActivities();
 
-        this.activityViewAdapter.updateDataSet(this.activities);
+        if(this.activities.size() == 0){
+
+            this.noActivitiesMessage.setVisibility(View.VISIBLE);
+            this.recyclerView.setVisibility(View.GONE);
+            
+        }else{
+
+            this.noActivitiesMessage.setVisibility(View.GONE);
+            this.recyclerView.setVisibility(View.VISIBLE);
+
+            this.activityViewAdapter.updateDataSet(this.activities);
+        }
+
     }
 }
