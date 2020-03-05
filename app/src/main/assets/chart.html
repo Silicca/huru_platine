@@ -10,6 +10,13 @@
 
         var ctx = document.getElementById('chart').getContext('2d');
 
+        /**
+        * Création d'un diagramme contenant les statistiques de l'utilisateur
+        */
+
+        /**
+        * Récupération des données
+        */
         var data = {
 
             labels: ['Content', 'En colère', 'Triste', 'Fatigué(e)', 'Stressé(e)'],
@@ -22,7 +29,9 @@
                 }
             ]
         }
-
+        /**
+        * Construction du diagramme en radar
+        */
         var chart = new Chart(ctx, {
             type: 'radar',
             data: data,

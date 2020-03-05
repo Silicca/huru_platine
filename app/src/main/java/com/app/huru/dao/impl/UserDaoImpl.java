@@ -20,6 +20,9 @@ public class UserDaoImpl implements UserDao {
         this.db = db;
     }
 
+    /**
+     * Récupération de l'utilisateur enregistré en base de données
+     * */
     @Override
     public User get() {
 
@@ -47,7 +50,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     /**
-     * Regarde si un utilisateur est déjà enregistré en base de données
+     * Vérification si un utilisateur est déjà enregistré en base de données
      * */
     @Override
     public boolean exists() {
@@ -64,7 +67,9 @@ public class UserDaoImpl implements UserDao {
 
         return count != 0;
     }
-
+    /**
+     * Enregistrement d'un utilisateur en base de données
+     * */
     @Override
     public void save(User user) {
 

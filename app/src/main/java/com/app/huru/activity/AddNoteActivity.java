@@ -68,6 +68,10 @@ public class AddNoteActivity extends AppCompatActivity implements ActivityGUI {
         });
     }
 
+    /**
+     * Construction d'un nouvel objet Note
+     * @see Note
+     * */
     private Note buildNote(){
 
         Note note = new Note();

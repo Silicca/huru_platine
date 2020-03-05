@@ -13,7 +13,9 @@ import com.app.huru.R;
 import com.app.huru.model.Note;
 import com.app.huru.service.NoteService;
 import com.google.android.material.snackbar.Snackbar;
-
+/**
+ * Activité affichant les détails d'une note
+ * */
 public class NoteDetailsActivity extends AppCompatActivity implements ActivityGUI {
 
     private NoteService noteService;
@@ -79,7 +81,9 @@ public class NoteDetailsActivity extends AppCompatActivity implements ActivityGU
             }
         });
     }
-
+    /**
+     * Enregistrement des modifications de la note actuelle
+     * */
     private void saveModification(){
 
         this.note.setTitle(this.noteTitle.getText().toString());
@@ -91,7 +95,9 @@ public class NoteDetailsActivity extends AppCompatActivity implements ActivityGU
 
         finish();
     }
-
+    /**
+     * Suppression de la note actuelle
+     * */
     private void removeNote(){
 
         this.noteService.removeNote(this.note.getId());

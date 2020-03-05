@@ -20,6 +20,9 @@ public class MoodDaoImpl implements MoodDao {
         this.db = db;
     }
 
+    /**
+     * Récupération d'une humeur ciblée par son id
+     * */
     @Override
     public Mood get(int id) {
 
@@ -42,7 +45,9 @@ public class MoodDaoImpl implements MoodDao {
 
         return mood;
     }
-
+    /**
+     * Récupération d'une humeur ciblée par son nom
+     * */
     @Override
     public Mood getByName(String name) {
 
@@ -65,7 +70,9 @@ public class MoodDaoImpl implements MoodDao {
 
         return mood;
     }
-
+    /**
+     * Enregistrement d'une humeur en base de données
+     * */
     @Override
     public void save(Mood mood) {
 
@@ -78,7 +85,9 @@ public class MoodDaoImpl implements MoodDao {
         db.insert(Database.TABLE_NAME_MOODS, null, values);
 
     }
-
+    /**
+     * Récupération de toutes les humeurs enregistrées en base de données
+     * */
     @Override
     public List<Mood> getAll() {
 

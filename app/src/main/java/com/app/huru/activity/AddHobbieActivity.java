@@ -53,6 +53,10 @@ public class AddHobbieActivity extends AppCompatActivity implements ActivityGUI 
         });
     }
 
+    /**
+     * Construction d'un nouvel objet Hobbie
+     * @see Hobbie
+     * */
     private Hobbie buildHobbie(){
 
         Hobbie hobbie = new Hobbie();

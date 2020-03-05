@@ -21,10 +21,10 @@ public class HobbieDaoImpl implements HobbieDao {
     public HobbieDaoImpl(Database db){
         this.db = db;
     }
-    /**
-     * Création de la table hobbies
-     */
 
+    /**
+     * Récupération de tous les hobbies enregistrés en base de données
+     * */
     @Override
     public List<Hobbie> getAll() {
 
@@ -54,7 +54,9 @@ public class HobbieDaoImpl implements HobbieDao {
 
         return hobbies;
     }
-
+    /**
+     * Enregistrement d'un hobbie en base de données
+     * */
     @Override
     public void save(Hobbie hobbie) {
         SQLiteDatabase db = this.db.getWritableDatabase();
@@ -67,7 +69,9 @@ public class HobbieDaoImpl implements HobbieDao {
 
 
     }
-
+    /**
+     * Suppression d'un hobbie en base de données en utilisant son id
+     * */
     @Override
     public void remove(Integer hobbieId) {
         SQLiteDatabase db = this.db.getWritableDatabase();
@@ -75,7 +79,9 @@ public class HobbieDaoImpl implements HobbieDao {
         db.delete(Database.TABLE_NAME_HOBBIES, "id=?", new String[]{String.valueOf(hobbieId)});
 
     }
-
+    /**
+     * Mise à jour d'un hobbie en base de données
+     * */
     @Override
     public void update(Hobbie hobbie) {
 
@@ -89,7 +95,9 @@ public class HobbieDaoImpl implements HobbieDao {
 
 
     }
-
+    /**
+     * Sélection d'un hobbie ciblé par son id
+     * */
     @Override
     public Hobbie get(Integer hobbieId) {
 

@@ -125,6 +125,9 @@ public class StatsFragment extends Fragment implements ActivityGUI {
         });
     }
 
+    /**
+     * Mise à jour de la webview, utilisée pour afficher un diagramme en radar
+     * */
     private void updateWebView(){
 
         this.webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null);

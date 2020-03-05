@@ -18,6 +18,9 @@ public class ActivityDaoImpl implements ActivityDao {
         this.db = db;
     }
 
+    /**
+     * Récupération de toutes les activités en base de données
+     * */
     @Override
     public List<Activity> getActivities() {
 

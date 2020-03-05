@@ -13,7 +13,9 @@ import com.app.huru.tools.Animation;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Adapteur servant au recyclerview affichant les activités
+ * */
 public class ActivityViewAdapter extends RecyclerView.Adapter<ActivityViewHolder>{
 
     private List<Activity> models;

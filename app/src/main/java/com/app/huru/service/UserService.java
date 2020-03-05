@@ -19,17 +19,23 @@ public class UserService {
 
     }
 
-
+    /**
+     * Récupération de l'utilisateur de l'application
+     * */
     public User getUser(){
 
         return this.userDao.get();
     }
-
+    /**
+     * Vérification de si un utilisateur existe déjà
+     * */
     public boolean userAlreadyExists(){
 
         return this.userDao.exists();
     }
-
+    /**
+     * Enregistrement d'un nouvel utilisateur
+     * */
     public void saveUser(String userName){
 
         User newUser = new User();

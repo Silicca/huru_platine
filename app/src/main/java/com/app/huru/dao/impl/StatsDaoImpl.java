@@ -19,6 +19,9 @@ public class StatsDaoImpl implements StatsDao {
         this.db = db;
     }
 
+    /**
+     * Récupération de l'ensemble des statistiques enregistrées en base de données
+     * */
     @Override
     public List<Stats> getAll() {
 
@@ -52,6 +55,9 @@ public class StatsDaoImpl implements StatsDao {
         return stats;
     }
 
+    /**
+     * Récupération des statistiques enregistrées à une date donnée
+     * */
     @Override
     public List<Stats> getByDate(String date) {
 
@@ -83,7 +89,9 @@ public class StatsDaoImpl implements StatsDao {
 
         return stats;
     }
-
+    /**
+     * Enregistrement d'une donnée statistique en base de données
+     * */
     @Override
     public void save(Stats stats) {
 
@@ -97,6 +105,9 @@ public class StatsDaoImpl implements StatsDao {
         db.insert(Database.TABLE_NAME_STATS, null, values);
     }
 
+    /**
+     * Suppression d'une donnée statistique ciblée par son id
+     * */
     @Override
     public void remove(Integer statsId) {
 

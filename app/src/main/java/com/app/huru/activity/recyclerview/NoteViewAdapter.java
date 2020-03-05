@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Adapteur pour l'affichage des notes
+ * Adapteur servant au recyclerview affichant les notes
  * */
 public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 

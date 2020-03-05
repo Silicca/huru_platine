@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.app.huru.R;
 import com.app.huru.model.Hobbie;
 import com.app.huru.service.HobbieService;
-
+/**
+ * Activité affichant les détails d'un hobbie
+ * */
 public class HobbieDetailsActivity extends AppCompatActivity implements ActivityGUI {
 
     private HobbieService hobbieService;
@@ -59,7 +61,9 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
         });
     }
 
-
+    /**
+     * Enregistrement des modifications du hobbie actuel
+     * */
     private void saveModification(){
 
         this.hobbie.setName(this.hobbieName.getText().toString());
@@ -67,7 +71,9 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
 
         finish();
     }
-
+    /**
+     * Suppression du hobbie actuel
+     * */
     private void removeHobbie(){
 
         this.hobbieService.removeHobbie(this.hobbie.getId());

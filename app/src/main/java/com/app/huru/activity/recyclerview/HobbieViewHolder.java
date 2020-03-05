@@ -32,7 +32,7 @@ public class HobbieViewHolder extends RecyclerView.ViewHolder {
         this.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("hobbie", hobbieNameText.getText().toString());
+
                 Intent intent = new Intent(v.getContext(), HobbieDetailsActivity.class);
                 intent.putExtra("hobbieId", id);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

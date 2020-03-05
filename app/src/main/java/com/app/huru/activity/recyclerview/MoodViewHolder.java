@@ -16,7 +16,9 @@ import com.app.huru.tools.DrawableMoodLoader;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Date;
-
+/**
+ * Représente un item à afficher dans la liste des humeurs
+ * */
 public class MoodViewHolder extends RecyclerView.ViewHolder {
 
     private int moodId;
@@ -40,6 +42,9 @@ public class MoodViewHolder extends RecyclerView.ViewHolder {
         this.statsService = new StatsService(this.view.getContext());
 
         this.view.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Enregistrement de l'humeur sélectionnée
+             * */
             @Override
             public void onClick(View v) {
 

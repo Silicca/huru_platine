@@ -64,7 +64,9 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
             }
         });
     }
-
+    /**
+     * Démarrage de l'activité principale
+     * */
     private void startHomeActivity(String username){
 
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

@@ -14,7 +14,9 @@ import com.app.huru.tools.Animation;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Adapteur servant au recyclerview affichant les humeurs
+ * */
 public class MoodViewAdapter extends RecyclerView.Adapter<MoodViewHolder> {
 
     private List<Mood> models;

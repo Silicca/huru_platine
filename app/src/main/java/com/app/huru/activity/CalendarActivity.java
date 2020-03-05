@@ -142,7 +142,9 @@ public class CalendarActivity extends AppCompatActivity implements ActivityGUI {
 
 
     }
-
+    /**
+     * Mise en valeur des jours du calendrier ayant une ou plusieurs notes
+     * */
     private void updateCalendarHighlightedDays(){
 
         List<EventDay> events = new ArrayList<>();

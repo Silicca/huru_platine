@@ -20,6 +20,9 @@ public class NoteDaoImpl implements NoteDao {
         this.db = db;
     }
 
+    /**
+     * Récupération de toutes les notes enregistrées en base de données
+     * */
     public List<Note> getAll() {
 
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_NOTES;
@@ -59,6 +62,9 @@ public class NoteDaoImpl implements NoteDao {
         return notes;
     }
 
+    /**
+     * Récupération de la liste des notes en fonction d'une date
+     * */
     @Override
     public List<Note> getByDate(String date) {
 
@@ -97,7 +103,9 @@ public class NoteDaoImpl implements NoteDao {
 
         return notes;
     }
-
+    /**
+     * Enregistrement d'une note en base de données
+     * */
     @Override
     public void save(Note note) {
         SQLiteDatabase db = this.db.getWritableDatabase();
@@ -113,7 +121,9 @@ public class NoteDaoImpl implements NoteDao {
         db.insert(Database.TABLE_NAME_NOTES, null, values);
 
     }
-
+    /**
+     * Suppression d'une note ciblée par son id
+     * */
     @Override
     public void remove(Integer noteId) {
 
@@ -122,7 +132,9 @@ public class NoteDaoImpl implements NoteDao {
         db.delete(Database.TABLE_NAME_NOTES, "id=?", new String[]{String.valueOf(noteId)});
 
     }
-
+    /**
+     * Mise à jour d'une note en base de données
+     * */
     @Override
     public void update(Note note) {
 
@@ -139,7 +151,9 @@ public class NoteDaoImpl implements NoteDao {
         db.update(Database.TABLE_NAME_NOTES, values, "id=?", new String[]{String.valueOf(note.getId())});
 
     }
-
+    /**
+     * Récupération d'une note ciblée par son id
+     * */
     @Override
     public Note get(Integer noteId) {
         String sql = "SELECT  * FROM " + Database.TABLE_NAME_NOTES+" WHERE id="+noteId;

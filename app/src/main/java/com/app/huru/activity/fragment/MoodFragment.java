@@ -91,6 +91,9 @@ public class MoodFragment extends Fragment implements ActivityGUI {
         super.onStart();
     }
 
+    /**
+     * Mise à jour de la liste des humeurs
+     * */
     private void updateMoodsList(){
 
         this.moods.clear();

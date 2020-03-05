@@ -10,7 +10,9 @@ import com.app.huru.datasource.Database;
 import com.app.huru.model.Stats;
 
 import java.util.List;
-
+/**
+ * Service lié à la gestion des statistiques
+ * */
 public class StatsService {
 
     private StatsDao statsDao;
@@ -23,7 +25,9 @@ public class StatsService {
 
         this.moodDao = new MoodDaoImpl(Database.getInstance(context));
     }
-
+    /**
+     * Récupération de toutes les données statistiques
+     * */
     public List<Stats> getAllStats(){
 
         List<Stats> stats = this.statsDao.getAll();
@@ -34,12 +38,16 @@ public class StatsService {
 
         return stats;
     }
-
+    /**
+     * Enregistrement de nouvelles données statistique
+     * */
     public void saveStats(Stats stats){
 
         this.statsDao.save(stats);
     }
-
+    /**
+     * Récupération des données statistiques pour une date donnée
+     * */
     public List<Stats> getStatsByDate(String date){
 
         List<Stats> stats = this.statsDao.getByDate(date);
@@ -50,7 +58,9 @@ public class StatsService {
 
         return stats;
     }
-
+    /**
+     * Calcule du pourcentage des humeurs pour une date de donnée
+     * */
     public int getPercentOf(String moodName,  String searchingDate){
 
             float res = 0.0f;

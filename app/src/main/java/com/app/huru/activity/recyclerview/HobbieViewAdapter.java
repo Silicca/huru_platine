@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Adapteur pour l'affichage des hobbies
+ * Adapteur servant au recyclerview affichant les hobbies
  * */
 public class HobbieViewAdapter extends RecyclerView.Adapter<HobbieViewHolder> {
 

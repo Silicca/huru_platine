@@ -53,7 +53,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/aileron_thin"
             android:textSize="16dp"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/darker_gray"
             android:layout_gravity="center"
             android:text="Pas de notes pour aujourd'hui." />
 

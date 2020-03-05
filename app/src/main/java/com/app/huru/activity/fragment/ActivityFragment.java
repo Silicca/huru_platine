@@ -22,6 +22,9 @@ import com.app.huru.service.ActivityService;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Fragment pour la page des proposition d'activités
+ * */
 public class ActivityFragment extends Fragment implements ActivityGUI {
 
     private int layout;
