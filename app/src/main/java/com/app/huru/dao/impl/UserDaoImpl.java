@@ -41,6 +41,8 @@ public class UserDaoImpl implements UserDao {
             } while (cursor.moveToNext());
         }
 
+        cursor.close();
+
         return user;
     }
 
@@ -58,6 +60,7 @@ public class UserDaoImpl implements UserDao {
 
         int count = cursor.getCount();
 
+        cursor.close();
 
         return count != 0;
     }

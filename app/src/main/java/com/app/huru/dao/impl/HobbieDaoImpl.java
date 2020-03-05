@@ -50,6 +50,8 @@ public class HobbieDaoImpl implements HobbieDao {
             } while (cursor.moveToNext());
         }
 
+        cursor.close();
+
         return hobbies;
     }
 
@@ -110,6 +112,7 @@ public class HobbieDaoImpl implements HobbieDao {
         }
 
 
+        cursor.close();
 
         return hobbie;
     }

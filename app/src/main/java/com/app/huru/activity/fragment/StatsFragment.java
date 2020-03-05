@@ -138,41 +138,6 @@ public class StatsFragment extends Fragment implements ActivityGUI {
         this.webview.loadUrl("file:///android_asset/chart.html");
     }
 
-    private int getStatsOf(String moodName){
-
-        float res = 0.0f;
-
-        int total = 0;
-        int count = 0;
-
-        List<Stats> stats;
-
-        if(this.searchingDate == null){
-            stats = this.statsService.getAllStats();
-        }
-        else{
-            stats = this.statsService.getStatsByDate(this.searchingDate);
-        }
-
-        total = stats.size();
-
-        if(total == 0){
-
-            return (int) res;
-        }
-
-        for(Stats stat : stats){
-
-            if(stat.getMoodId() == this.moodService.getMoodByName(moodName).getId()){
-                count ++;
-            }
-        }
-
-        res = ( count / (float) total ) * 100;
-
-        return (int) res;
-    }
-
     @Override
     public void setMenuVisibility(boolean menuVisible) {
         super.setMenuVisibility(menuVisible);
@@ -201,27 +166,27 @@ public class StatsFragment extends Fragment implements ActivityGUI {
         //content
         @JavascriptInterface
         public int getNum1() {
-            return getStatsOf("Content(e)");
+            return statsService.getPercentOf("Content(e)", searchingDate);
         }
         //colere
         @JavascriptInterface
         public int getNum2() {
-            return getStatsOf("En colère");
+            return  statsService.getPercentOf("En colère", searchingDate);
         }
         //tristesse
         @JavascriptInterface
         public int getNum3() {
-            return getStatsOf("Triste");
+            return  statsService.getPercentOf("Triste", searchingDate);
         }
         //fatigue
         @JavascriptInterface
         public int getNum4() {
-            return getStatsOf("Fatigué(e)");
+            return  statsService.getPercentOf("Fatigué(e)", searchingDate);
         }
         //stress
         @JavascriptInterface
         public int getNum5() {
-            return getStatsOf("Stressé(e)");
+            return  statsService.getPercentOf("Stressé(e)", searchingDate);
         }
     }
 }

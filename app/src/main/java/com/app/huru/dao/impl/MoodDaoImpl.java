@@ -38,6 +38,8 @@ public class MoodDaoImpl implements MoodDao {
 
         }
 
+        cursor.close();
+
         return mood;
     }
 
@@ -58,6 +60,8 @@ public class MoodDaoImpl implements MoodDao {
             mood.setMoodName(cursor.getString(1));
 
         }
+
+        cursor.close();
 
         return mood;
     }
@@ -99,6 +103,8 @@ public class MoodDaoImpl implements MoodDao {
 
             } while (cursor.moveToNext());
         }
+
+        cursor.close();
 
         return moods;
     }

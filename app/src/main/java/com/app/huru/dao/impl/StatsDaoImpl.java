@@ -47,6 +47,8 @@ public class StatsDaoImpl implements StatsDao {
             } while (cursor.moveToNext());
         }
 
+        cursor.close();
+
         return stats;
     }
 
@@ -77,6 +79,8 @@ public class StatsDaoImpl implements StatsDao {
             } while (cursor.moveToNext());
         }
 
+        cursor.close();
+
         return stats;
     }
 
@@ -95,6 +99,7 @@ public class StatsDaoImpl implements StatsDao {
 
     @Override
     public void remove(Integer statsId) {
+
         SQLiteDatabase db = this.db.getWritableDatabase();
 
         db.delete(Database.TABLE_NAME_STATS, "id=?", new String[]{String.valueOf(statsId)});

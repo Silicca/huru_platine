@@ -38,10 +38,32 @@ public class ActivityDaoImpl implements ActivityDao {
 
                 activity.setActivityName(cursor.getString(1));
 
+                activity.setPercentJoiceMin(cursor.getInt(2));
+
+                activity.setPercentJoiceMax(cursor.getInt(3));
+
+                activity.setPercentSadMin(cursor.getInt(4));
+
+                activity.setPercentSadMax(cursor.getInt(5));
+
+                activity.setPercentAngryMin(cursor.getInt(6));
+
+                activity.setPercentAngryMax(cursor.getInt(7));
+
+                activity.setPercentStressMin(cursor.getInt(8));
+
+                activity.setPercentStressMax(cursor.getInt(9));
+
+                activity.setPercentTiredMin(cursor.getInt(10));
+
+                activity.setPercentTiredMax(cursor.getInt(11));
+
                 activities.add(activity);
 
             } while (cursor.moveToNext());
         }
+
+        cursor.close();
 
         return activities;
     }

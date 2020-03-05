@@ -54,6 +54,7 @@ public class NoteDaoImpl implements NoteDao {
             } while (cursor.moveToNext());
         }
 
+        cursor.close();
 
         return notes;
     }
@@ -91,6 +92,8 @@ public class NoteDaoImpl implements NoteDao {
 
             } while (cursor.moveToNext());
         }
+
+        cursor.close();
 
         return notes;
     }
@@ -164,6 +167,8 @@ public class NoteDaoImpl implements NoteDao {
 
             } while (cursor.moveToNext());
         }
+
+        cursor.close();
 
         return note;
     }

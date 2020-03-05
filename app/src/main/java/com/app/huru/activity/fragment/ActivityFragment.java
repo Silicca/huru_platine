@@ -87,6 +87,30 @@ public class ActivityFragment extends Fragment implements ActivityGUI {
 
         this.updateActivitiesList();
     }
+
+    @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+
+        if(menuVisible){
+
+            if(this.activities != null){
+
+                this.updateActivitiesList();
+            }
+
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(this.activities != null){
+
+            this.updateActivitiesList();
+        }
+    }
+
     /**
      * Met à jour la liste des activités à proposer
      * */

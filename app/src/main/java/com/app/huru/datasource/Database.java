@@ -97,8 +97,23 @@ public class Database extends SQLiteOpenHelper {
         /**
          * Création des activités proposées par l'application
          * */
-        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('0', 'Aller au cinéma', '20', '100', '0', '20', '0', '10', '0', '10', '0', '20');");
-        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('1', 'Lire un livre', '0', '40', '0', '10', '0', '5', '0', '5', '10', '40');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('0', 'Aller au cinéma', '20', '100', '0', '30', '0', '10', '0', '10', '0', '20');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('1', 'Lire un livre', '0', '60', '0', '20', '0', '20', '0', '20', '0', '50');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('2', 'Regarder ton film préféré', '0', '20', '10', '40', '0', '5', '0', '30', '0', '30');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('3', 'Faire une balade', '0', '50', '0', '20', '0', '5', '0', '10', '0', '10');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('4', 'Regarder une comédie', '0', '40', '0', '40', '0', '60', '0', '40', '0', '20');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('5', 'Prendre un bain/douche bien chaud(e)', '0', '50', '0', '20', '0', '50', '0', '100', '0', '40');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('6', 'Faire une activité physique', '20', '100', '0', '30', '0', '10', '0', '10', '0', '20');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('7', 'Jouer à un jeu vidéo', '0', '80', '0', '30', '0', '10', '0', '10', '0', '20');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('8', 'Aller voir des amis / proches', '0', '60', '0', '40', '0', '10', '0', '10', '0', '20');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('9', 'Faire une petite sieste', '0', '30', '0', '30', '0', '30', '0', '30', '30', '100');");
+        queries.add("INSERT INTO "+ TABLE_NAME_ACTIVITIES+ "(id, name, percentJoiceMin, percentJoiceMax, percentSadMin, percentSadMax, percentAngryMin, percentAngryMax, percentStressMin, percentStressMax, percentTiredMin, percentTiredMax) VALUES('10', 'Prendre un thé',  '0', '60', '0', '20', '0', '100', '0', '30', '0', '50');");
+
+
+
+
+
+
 
 
         /**

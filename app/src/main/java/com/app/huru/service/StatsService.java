@@ -51,8 +51,40 @@ public class StatsService {
         return stats;
     }
 
-    public void removeStats(int id){
-        
-        this.statsDao.remove(id);
+    public int getPercentOf(String moodName,  String searchingDate){
+
+            float res = 0.0f;
+
+            int total = 0;
+            int count = 0;
+
+            List<Stats> stats;
+
+            if(searchingDate == null){
+                stats = this.getAllStats();
+            }
+            else{
+                stats = this.getStatsByDate(searchingDate);
+            }
+
+            total = stats.size();
+
+            if(total == 0){
+
+                return (int) res;
+            }
+
+            for(Stats stat : stats){
+
+                if(stat.getMoodId() == this.moodDao.getByName(moodName).getId()){
+                    count ++;
+                }
+            }
+
+            res = ( count / (float) total ) * 100;
+
+            return (int) res;
+
     }
+
 }
