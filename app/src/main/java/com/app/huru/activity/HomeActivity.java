@@ -49,5 +49,14 @@ public class HomeActivity extends AppCompatActivity implements ActivityGUI{
 
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        this.tabLayout.setupWithViewPager(this.viewPager);
+
+        this.tabLayout.getTabAt(0).setIcon(R.drawable.accueil96);
+        this.tabLayout.getTabAt(1).setIcon(R.drawable.hobbiescoeur96);
+        this.tabLayout.getTabAt(2).setIcon(R.drawable.activites96);
+        this.tabLayout.getTabAt(3).setIcon(R.drawable.humeurs96);
+        this.tabLayout.getTabAt(4).setIcon(R.drawable.stats96);
+
     }
 }

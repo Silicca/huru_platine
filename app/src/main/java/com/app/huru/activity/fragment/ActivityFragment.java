@@ -128,7 +128,7 @@ public class ActivityFragment extends Fragment implements ActivityGUI {
 
             this.noActivitiesMessage.setVisibility(View.VISIBLE);
             this.recyclerView.setVisibility(View.GONE);
-            
+
         }else{
 
             this.noActivitiesMessage.setVisibility(View.GONE);
