@@ -18,7 +18,6 @@ public class NoteService {
         this.noteDao = new NoteDaoImpl(Database.getInstance(context));
     }
 
-
     public List<Note> getAllNotes(){
 
         return this.noteDao.getAll();
