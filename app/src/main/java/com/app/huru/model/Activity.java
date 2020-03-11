@@ -29,7 +29,17 @@ public class Activity {
     private int percentTiredMax;
 
     public Activity(){
-        //constructeur vide
+
+        this.percentJoiceMin = 0;
+        this.percentJoiceMax = 50;
+        this.percentSadMin = 0;
+        this.percentSadMax = 50;
+        this.percentAngryMin = 0;
+        this.percentAngryMax = 50;
+        this.percentStressMin = 0;
+        this.percentStressMax = 50;
+        this.percentTiredMin = 0;
+        this.percentTiredMax = 50;
     }
 
     public Activity(String activityName){

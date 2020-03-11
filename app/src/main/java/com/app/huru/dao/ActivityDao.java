@@ -10,4 +10,8 @@ import java.util.List;
 public interface ActivityDao {
 
     List<Activity> getActivities();
+
+    void save(Activity activity);
+
+    void removeByName(String activityName);
 }

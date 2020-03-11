@@ -27,6 +27,13 @@ public class ActivityService {
         this.statsService = new StatsService(context);
     }
 
+    public void saveActivity(Activity activity){
+        this.activityDao.save(activity);
+    }
+
+    public void removeActivityByName(String name){
+        this.activityDao.removeByName(name);
+    }
     /**
      * Récupération des activités proposées en fonction de l'humeur de l'utilisateur
      * */

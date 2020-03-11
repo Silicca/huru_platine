@@ -11,8 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.huru.R;
+import com.app.huru.model.Activity;
 import com.app.huru.model.Hobbie;
 import com.app.huru.model.Mood;
+import com.app.huru.service.ActivityService;
 import com.app.huru.service.HobbieService;
 import com.app.huru.service.MoodService;
 import com.app.huru.tools.DrawableMoodLoader;
@@ -26,6 +28,7 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
 
     private HobbieService hobbieService;
     private MoodService moodService;
+    private ActivityService activityService;
 
     private Button modifyHobbieButton;
     private Button removeHobbieButton;
@@ -40,6 +43,7 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
 
     private int selectMoodIndex;
     private List<Mood> moods;
+    private String oldHobbieName;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,10 +52,13 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
 
         this.hobbieService = new HobbieService(getApplicationContext());
         this.moodService = new MoodService(getApplicationContext());
+        this.activityService = new ActivityService(getApplicationContext());
 
         int id = getIntent().getExtras().getInt("hobbieId");
 
         this.hobbie = this.hobbieService.getHobbie(id);
+
+        this.oldHobbieName = this.hobbie.getName();
 
         this.moods = this.moodService.getAllMoods();
 
@@ -69,7 +76,10 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
         this.shiftRightButton = findViewById(R.id.shiftRightButton);
 
         this.selectMoodImage = findViewById(R.id.selectMoodImage);
+        this.selectMoodImage.setImageResource(DrawableMoodLoader.load(this.hobbie.getMood()));
+
         this.selectMoodText = findViewById(R.id.selectMoodText);
+        this.selectMoodText.setText(this.hobbie.getMood().getMoodName());
 
         this.hobbieName = findViewById(R.id.hobbieName);
         this.hobbieName.setText(this.hobbie.getName());
@@ -113,7 +123,10 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
     private void saveModification(){
 
         this.hobbie.setName(this.hobbieName.getText().toString());
+        this.hobbie.setMood(this.moods.get(this.selectMoodIndex));
         this.hobbieService.updateHobbie(this.hobbie);
+
+        updateActivity(this.hobbie);
 
         finish();
     }
@@ -123,6 +136,7 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
     private void removeHobbie(){
 
         this.hobbieService.removeHobbie(this.hobbie.getId());
+        this.activityService.removeActivityByName(this.oldHobbieName);
 
         finish();
     }
@@ -139,5 +153,39 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
 
         this.selectMoodImage.setImageResource(DrawableMoodLoader.load(this.moods.get(this.selectMoodIndex)));
         this.selectMoodText.setText(this.moods.get(this.selectMoodIndex).getMoodName());
+    }
+
+    private void updateActivity(Hobbie hobbie){
+
+        this.activityService.removeActivityByName(oldHobbieName);
+
+        Activity activity = new Activity();
+
+        activity.setActivityName(hobbie.getName());
+
+        switch (hobbie.getMood().getMoodName()){
+            case "Content(e)":
+                activity.setPercentJoiceMin(50);
+                activity.setPercentJoiceMax(100);
+                break;
+            case "Triste":
+                activity.setPercentSadMin(50);
+                activity.setPercentSadMax(100);
+                break;
+            case "En colère":
+                activity.setPercentAngryMin(50);
+                activity.setPercentAngryMax(100);
+                break;
+            case "Stressé(e)":
+                activity.setPercentStressMin(50);
+                activity.setPercentStressMax(100);
+                break;
+            case "Fatigué(e)":
+                activity.setPercentTiredMin(50);
+                activity.setPercentTiredMax(100);
+                break;
+        }
+
+        this.activityService.saveActivity(activity);
     }
 }

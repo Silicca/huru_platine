@@ -1,5 +1,6 @@
 package com.app.huru.dao.impl;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -69,5 +70,34 @@ public class ActivityDaoImpl implements ActivityDao {
         cursor.close();
 
         return activities;
+    }
+
+    @Override
+    public void save(Activity activity) {
+
+        SQLiteDatabase db = this.db.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put("name", activity.getActivityName());
+        values.put("percentJoiceMin", activity.getPercentJoiceMin());
+        values.put("percentJoiceMax", activity.getPercentJoiceMax());
+        values.put("percentSadMin", activity.getPercentSadMin());
+        values.put("percentSadMax", activity.getPercentSadMax());
+        values.put("percentAngryMin", activity.getPercentAngryMin());
+        values.put("percentAngryMax", activity.getPercentAngryMax());
+        values.put("percentStressMin", activity.getPercentStressMin());
+        values.put("percentStressMax", activity.getPercentStressMax());
+        values.put("percentTiredMin", activity.getPercentTiredMin());
+        values.put("percentTiredMax", activity.getPercentTiredMax());
+
+        db.insert(Database.TABLE_NAME_ACTIVITIES, null, values);
+    }
+
+    @Override
+    public void removeByName(String activityName) {
+        SQLiteDatabase db = this.db.getWritableDatabase();
+
+        db.delete(Database.TABLE_NAME_ACTIVITIES, "name=?", new String[]{activityName});
     }
 }

@@ -8,6 +8,8 @@ public class Hobbie {
 
     private String name;
 
+    private Mood mood;
+
     public Hobbie(){
         //constructeur vide
     }
@@ -26,6 +28,14 @@ public class Hobbie {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    public Mood getMood(){
+        return this.mood;
+    }
+
+    public void setMood(Mood mood){
+        this.mood = mood;
     }
 
 }

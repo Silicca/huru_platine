@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.app.huru.dao.HobbieDao;
 import com.app.huru.datasource.Database;
 import com.app.huru.model.Hobbie;
+import com.app.huru.model.Mood;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +40,18 @@ public class HobbieDaoImpl implements HobbieDao {
         if (cursor.moveToFirst()) {
 
             do {
+
+                Mood mood = new Mood();
+
                 Hobbie hobbie = new Hobbie();
 
                 hobbie.setId(cursor.getInt(0));
 
                 hobbie.setName(cursor.getString(1));
+
+                mood.setId(cursor.getInt(2));
+
+                hobbie.setMood(mood);
 
                 hobbies.add(hobbie);
 
@@ -64,6 +72,7 @@ public class HobbieDaoImpl implements HobbieDao {
         ContentValues values = new ContentValues();
 
         values.put("name", hobbie.getName());
+        values.put("moodId", hobbie.getMood().getId());
 
         db.insert(Database.TABLE_NAME_HOBBIES, null, values);
 
@@ -88,7 +97,7 @@ public class HobbieDaoImpl implements HobbieDao {
         ContentValues values = new ContentValues();
 
         values.put("name", hobbie.getName());
-
+        values.put("moodId", hobbie.getMood().getId());
         SQLiteDatabase db = this.db.getWritableDatabase();
 
         db.update(Database.TABLE_NAME_HOBBIES, values, "id=?", new String[]{String.valueOf(hobbie.getId())});
@@ -112,9 +121,15 @@ public class HobbieDaoImpl implements HobbieDao {
 
             do {
 
+                Mood mood = new Mood();
+
                 hobbie.setId(cursor.getInt(0));
 
                 hobbie.setName(cursor.getString(1));
+
+                mood.setId(cursor.getInt(2));
+
+                hobbie.setMood(mood);
 
             } while (cursor.moveToNext());
         }

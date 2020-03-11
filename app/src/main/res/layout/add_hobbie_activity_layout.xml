@@ -72,7 +72,56 @@
             android:fontFamily="@font/aileron_thin"
             android:hint="Mon hobbie ..."/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/shiftLeftButtonAdd"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/aileron_bold"
+                android:drawableLeft="@drawable/ic_arrow_left"
+                android:textColor="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/selectMoodImageAdd"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="50px"
+                android:layout_marginRight="50px"
+                app:srcCompat="@drawable/content" />
+
+            <Button
+                android:id="@+id/shiftRightButtonAdd"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/aileron_bold"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="50px"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/selectMoodTextAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aileron_thin"
+                android:textSize="16dp"
+                android:text="Content(e)" />
+
+        </LinearLayout>
         <Button
             android:id="@+id/saveHobbieButton"
             android:layout_width="match_parent"

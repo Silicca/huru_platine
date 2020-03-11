@@ -68,7 +68,7 @@ public class Database extends SQLiteOpenHelper {
 
         queries.add("CREATE TABLE IF NOT EXISTS " + TABLE_NAME_NOTES+ " ( id INTEGER PRIMARY KEY NOT NULL, date VARCHAR(255) NOT NULL, hours VARCHAR(255) NOT NULL, title VARCHAR(255) NOT NULL, participants VARCHAR(255) NOT NULL, place VARCHAR(255) NOT NULL);");
 
-        queries.add("CREATE TABLE IF NOT EXISTS " + TABLE_NAME_HOBBIES+" ( id INTEGER PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL);");
+        queries.add("CREATE TABLE IF NOT EXISTS " + TABLE_NAME_HOBBIES+" ( id INTEGER PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL, moodId INTEGER NOT NULL);");
 
         queries.add("CREATE TABLE IF NOT EXISTS "+TABLE_NAME_MOODS+" (id INTEGER PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL);");
 
@@ -79,10 +79,10 @@ public class Database extends SQLiteOpenHelper {
         /**
          * Création des hobbies de base proposés par l'application
          */
-        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('0', 'Dessin');");
-        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('1', 'Musique');");
-        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('2', 'Photographie');");
-        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name) VALUES('3', 'Cinéma');");
+        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name, moodId) VALUES('0', 'Dessin', '0');");
+        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name, moodId) VALUES('1', 'Musique', '4');");
+        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name, moodId) VALUES('2', 'Photographie', '0');");
+        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name, moodId) VALUES('3', 'Cinéma', '0');");
 
         /**
          * Création des humeurs proposées par l'application
