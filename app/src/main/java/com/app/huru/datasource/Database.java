@@ -77,14 +77,6 @@ public class Database extends SQLiteOpenHelper {
         queries.add("CREATE TABLE IF NOT EXISTS "+TABLE_NAME_ACTIVITIES+"( id INTEGER PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL, percentJoiceMin INTEGER NOT NULL, percentJoiceMax INTEGER NOT NULL, percentSadMin INTEGER NOT NULL, percentSadMax INTEGER NOT NULL, percentAngryMin INTEGER NOT NULL, percentAngryMax INTEGER NOT NULL, percentStressMin INTEGER NOT NULL, percentStressMax INTEGER NOT NULL, percentTiredMin INTEGER NOT NULL, percentTiredMax INTEGER NOT NULL);");
 
         /**
-         * Création des hobbies de base proposés par l'application
-         */
-        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name, moodId) VALUES('0', 'Dessin', '0');");
-        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name, moodId) VALUES('1', 'Musique', '4');");
-        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name, moodId) VALUES('2', 'Photographie', '0');");
-        queries.add("INSERT INTO "+ TABLE_NAME_HOBBIES+ "(id,name, moodId) VALUES('3', 'Cinéma', '0');");
-
-        /**
          * Création des humeurs proposées par l'application
          * */
         queries.add("INSERT INTO "+ TABLE_NAME_MOODS+ "(id,name) VALUES('0', 'Content(e)');");
