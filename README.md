@@ -12,13 +12,12 @@
 
 Application Android de suivi d'humeur et d'accompagnement quotidien.
 
+Cette application a été développée dans le cadre de l'UE Platine du master 2 E-services de l'université de Lille, sciences et technologies.
 
-### A FAIRE ###
+### Technologies ###
 
-* Faire les icones manquantes (icone pour les fragments, avatar et settings)
+* Android (API 26 min)
+* Java, Javascript
+* Material-Calendar-View, Chart.js
 
-* Corriger la modif des hobbies
 
-* Faire la partie stats -> afficher l'humeur en fonction de celle récupérée (voir HomeFragment"
-
-* Verifier les champs lors des modifs
