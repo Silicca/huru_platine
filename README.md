@@ -1,12 +1,9 @@
-# BRANCHE DE DEVELOPPEMENT #
-
-## DEPOT PROJET PLATINE HURU ##
+## DEPOT HURU ##
 
 ### Auteurs ###
 
 * Giaquinto Raphael
 * Carton floriane
-
 
 ### Description du projet ###
 
