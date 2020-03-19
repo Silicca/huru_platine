@@ -27,19 +27,13 @@ import java.util.List;
  * */
 public class AddHobbieActivity extends AppCompatActivity implements ActivityGUI {
 
-    private Button saveHobbieButton;
-    private Button shiftLeftButtonAdd;
-    private Button shiftRightButtonAdd;
     private ImageView selectMoodImageAdd;
     private TextView selectMoodTextAdd;
 
     private EditText hobbieName;
 
     private HobbieService hobbieService;
-    private MoodService moodService;
     private ActivityService activityService;
-
-    private Hobbie hobbie;
 
     private int selectMoodIndex;
     private List<Mood> moods;
@@ -52,10 +46,12 @@ public class AddHobbieActivity extends AppCompatActivity implements ActivityGUI 
         setContentView(R.layout.add_hobbie_activity_layout);
 
         this.hobbieService = new HobbieService(getApplicationContext());
-        this.moodService = new MoodService((getApplicationContext()));
+
         this.activityService = new ActivityService(getApplicationContext());
 
-        this.moods = this.moodService.getAllMoods();
+        MoodService moodService = new MoodService((getApplicationContext()));
+        this.moods = moodService.getAllMoods();
+
         this.selectMoodIndex = 0;
 
         this.setupGUI();
@@ -64,10 +60,11 @@ public class AddHobbieActivity extends AppCompatActivity implements ActivityGUI 
     @Override
     public void setupGUI() {
 
-        this.saveHobbieButton = findViewById(R.id.saveHobbieButton);
         this.hobbieName = findViewById(R.id.hobbieName);
-        this.shiftLeftButtonAdd = findViewById(R.id.shiftLeftButtonAdd);
-        this.shiftRightButtonAdd = findViewById(R.id.shiftRightButtonAdd);
+
+        Button saveHobbieButton = findViewById(R.id.saveHobbieButton);
+        Button shiftLeftButtonAdd = findViewById(R.id.shiftLeftButtonAdd);
+        Button shiftRightButtonAdd = findViewById(R.id.shiftRightButtonAdd);
 
         this.selectMoodImageAdd = findViewById(R.id.selectMoodImageAdd);
         this.selectMoodImageAdd.setImageResource(DrawableMoodLoader.load(this.moods.get(this.selectMoodIndex)));
@@ -75,34 +72,26 @@ public class AddHobbieActivity extends AppCompatActivity implements ActivityGUI 
         this.selectMoodTextAdd = findViewById(R.id.selectMoodTextAdd);
         this.selectMoodTextAdd.setText(this.moods.get(this.selectMoodIndex).getMoodName());
 
-        this.saveHobbieButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        saveHobbieButton.setOnClickListener( listener -> {
 
-                Hobbie hobbie = buildHobbie();
-                hobbieService.saveHobbie(hobbie);
-                saveActivity(hobbie);
+            Hobbie hobbie = buildHobbie();
+            hobbieService.saveHobbie(hobbie);
+            saveActivity(hobbie);
 
-                finish();
-            }
+            finish();
         });
 
-        this.shiftLeftButtonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        shiftLeftButtonAdd.setOnClickListener( listener -> {
 
                 selectMoodIndex --;
                 selectMood();
-            }
         });
 
-        this.shiftRightButtonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        shiftRightButtonAdd.setOnClickListener(listener -> {
 
                 selectMoodIndex ++;
                 selectMood();
-            }
+
         });
     }
 

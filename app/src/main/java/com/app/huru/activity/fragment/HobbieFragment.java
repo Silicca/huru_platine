@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.huru.R;
 import com.app.huru.activity.ActivityGUI;
 import com.app.huru.activity.AddHobbieActivity;
-import com.app.huru.activity.HobbieDetailsActivity;
 import com.app.huru.activity.recyclerview.HobbieViewAdapter;
 import com.app.huru.model.Hobbie;
 import com.app.huru.service.HobbieService;
