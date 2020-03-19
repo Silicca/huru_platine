@@ -8,6 +8,6 @@ public interface ActivityGUI {
     /**
      * Méthode d'initialisation des composants graphiques d'une activité
      * */
-    public void setupGUI();
+    void setupGUI();
 
 }

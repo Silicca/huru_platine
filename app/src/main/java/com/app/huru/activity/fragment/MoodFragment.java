@@ -1,8 +1,7 @@
 package com.app.huru.activity.fragment;
 
-import android.content.Context;
+
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +29,6 @@ public class MoodFragment extends Fragment implements ActivityGUI {
     private int layout;
 
     private View parentView;
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
 
     private MoodViewAdapter moodViewAdapter;
 
@@ -61,35 +58,21 @@ public class MoodFragment extends Fragment implements ActivityGUI {
     @Override
     public void setupGUI() {
 
-        this.recyclerView = this.parentView.findViewById(R.id.moodsRecyclerView);
+        RecyclerView recyclerView = this.parentView.findViewById(R.id.moodsRecyclerView);
 
-        this.layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
 
-        this.recyclerView.setLayoutManager(this.layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
 
         this.moodViewAdapter = new MoodViewAdapter();
 
-        this.recyclerView.setAdapter(this.moodViewAdapter);
+        recyclerView.setAdapter(this.moodViewAdapter);
 
         this.moodViewAdapter.updateDataSet(this.moods);
 
         this.updateMoodsList();
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
 
     /**
      * Mise à jour de la liste des humeurs

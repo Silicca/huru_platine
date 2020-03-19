@@ -3,7 +3,6 @@ package com.app.huru.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -19,7 +18,6 @@ import com.app.huru.tools.DateFormatter;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
-import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,18 +30,13 @@ import java.util.List;
 public class CalendarActivity extends AppCompatActivity implements ActivityGUI {
 
     private CalendarView calendar;
-    private FloatingActionButton addNoteButton;
 
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private NoteViewAdapter noteViewAdapter;
 
     private NoteService noteService;
 
     private String date;
     private List<Note> notes;
-
-    private TextView selectedDate;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,35 +52,33 @@ public class CalendarActivity extends AppCompatActivity implements ActivityGUI {
     @Override
     public void setupGUI() {
 
-        this.selectedDate = findViewById(R.id.selectedDate);
 
-        this.addNoteButton = findViewById(R.id.addNoteButton);
+
+        FloatingActionButton addNoteButton = findViewById(R.id.addNoteButton);
         /**
          * Ajout du listener sur le clic du bouton permettant d'ajouter une note au jour sélectionné
          * */
-        this.addNoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AddNoteActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("date", date);
-                startActivity(intent);
-            }
+        addNoteButton.setOnClickListener(view -> {
+
+            Intent intent = new Intent(view.getContext(), AddNoteActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("date", date);
+            startActivity(intent);
+
         });
+
+        TextView selectedDate = findViewById(R.id.selectedDate);
 
         this.calendar = findViewById(R.id.calendar);
         /**
          * Mise en place du listener permettant de récupérer la date actuellement sélectionnée
          * */
-        this.calendar.setOnDayClickListener(new OnDayClickListener() {
-            @Override
-            public void onDayClick(EventDay eventDay) {
+        this.calendar.setOnDayClickListener(eventDay -> {
 
-                date = DateFormatter.eventDayToString(eventDay);
-                selectedDate.setText(date.replace(' ', '/'));
-                updateNotesList();
+            date = DateFormatter.eventDayToString(eventDay);
 
-            }
+            selectedDate.setText(date.replace(' ', '/'));
+            updateNotesList();
         });
         /**
          * Initialisation du calendrier en lui indiquant de s'initialiser à la date d'aujourd'hui
@@ -99,21 +90,21 @@ public class CalendarActivity extends AppCompatActivity implements ActivityGUI {
 
             this.date = DateFormatter.dateToString(today);
 
-            this.selectedDate.setText(this.date.replace(' ', '/'));
+            selectedDate.setText(this.date.replace(' ', '/'));
         } catch (OutOfDateRangeException e) {
-            e.printStackTrace();
+            Log.e("error", e.getMessage());
         }
 
         //RECYCLER VIEW
-        this.recyclerView = findViewById(R.id.calendarNotesRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.calendarNotesRecyclerView);
 
-        this.layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false );
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false );
 
-        this.recyclerView.setLayoutManager(this.layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
 
         this.noteViewAdapter = new NoteViewAdapter();
 
-        this.recyclerView.setAdapter(this.noteViewAdapter);
+        recyclerView.setAdapter(this.noteViewAdapter);
 
         this.updateNotesList();
 

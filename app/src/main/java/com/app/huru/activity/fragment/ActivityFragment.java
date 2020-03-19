@@ -1,6 +1,5 @@
 package com.app.huru.activity.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +31,6 @@ public class ActivityFragment extends Fragment implements ActivityGUI {
     private TextView noActivitiesMessage;
 
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
 
     private ActivityViewAdapter activityViewAdapter;
 
@@ -63,30 +61,15 @@ public class ActivityFragment extends Fragment implements ActivityGUI {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-    @Override
     public void setupGUI() {
 
         this.noActivitiesMessage = this.parentView.findViewById(R.id.noActivitiesMessage);
 
         this.recyclerView  = this.parentView.findViewById(R.id.activityRecyclerView);
 
-        this.layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
 
-        this.recyclerView.setLayoutManager(this.layoutManager);
+        this.recyclerView.setLayoutManager(layoutManager);
 
         this.activityViewAdapter = new ActivityViewAdapter();
 

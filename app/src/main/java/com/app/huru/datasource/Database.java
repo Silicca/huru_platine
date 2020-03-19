@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.app.huru.model.Mood;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package com.app.huru.activity;
 
 import android.os.Bundle;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -17,12 +16,6 @@ import com.google.android.material.tabs.TabLayout;
  * */
 public class HomeActivity extends AppCompatActivity implements ActivityGUI{
 
-    private TextView usernameView;
-
-    private ViewPager viewPager;
-
-    private TabLayout tabLayout;
-
     private static final int NUMBER_OF_PAGES = 5;
 
     @Override
@@ -36,27 +29,27 @@ public class HomeActivity extends AppCompatActivity implements ActivityGUI{
     @Override
     public void setupGUI() {
 
-        this.tabLayout = findViewById(R.id.tabLayout);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
 
-        this.usernameView = findViewById(R.id.homepage_username);
+        TextView usernameView = findViewById(R.id.homepage_username);
 
         String username = getIntent().getExtras().getString("username");
 
-        this.usernameView.setText("Bonjour "+username+" !");
+        usernameView.setText("Bonjour "+username+" !");
 
-        this.viewPager = findViewById(R.id.home_viewpager);
-        this.viewPager.setAdapter(new FragmentAdapter(this.getSupportFragmentManager(), NUMBER_OF_PAGES));
+        ViewPager viewPager = findViewById(R.id.home_viewpager);
+        viewPager.setAdapter(new FragmentAdapter(this.getSupportFragmentManager(), NUMBER_OF_PAGES));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-        this.tabLayout.setupWithViewPager(this.viewPager);
+        tabLayout.setupWithViewPager(viewPager);
 
-        this.tabLayout.getTabAt(0).setIcon(R.drawable.accueil96);
-        this.tabLayout.getTabAt(1).setIcon(R.drawable.hobbiescoeur96);
-        this.tabLayout.getTabAt(2).setIcon(R.drawable.activites96);
-        this.tabLayout.getTabAt(3).setIcon(R.drawable.humeurs96);
-        this.tabLayout.getTabAt(4).setIcon(R.drawable.stats96);
+        tabLayout.getTabAt(0).setIcon(R.drawable.accueil96);
+        tabLayout.getTabAt(1).setIcon(R.drawable.hobbiescoeur96);
+        tabLayout.getTabAt(2).setIcon(R.drawable.activites96);
+        tabLayout.getTabAt(3).setIcon(R.drawable.humeurs96);
+        tabLayout.getTabAt(4).setIcon(R.drawable.stats96);
 
     }
 }

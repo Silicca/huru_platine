@@ -1,8 +1,6 @@
 package com.app.huru.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -20,8 +18,6 @@ import com.app.huru.service.NoteService;
  * */
 public class AddNoteActivity extends AppCompatActivity implements ActivityGUI {
 
-    private Button saveNoteButton;
-
     private EditText noteHours;
     private EditText noteMinutes;
     private EditText noteTitle;
@@ -31,8 +27,6 @@ public class AddNoteActivity extends AppCompatActivity implements ActivityGUI {
     private NoteService noteService;
 
     private String noteDate;
-
-    private Note note;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,21 +44,19 @@ public class AddNoteActivity extends AppCompatActivity implements ActivityGUI {
     @Override
     public void setupGUI() {
 
-        this.saveNoteButton = findViewById(R.id.saveNoteButton);
+        Button saveNoteButton = findViewById(R.id.saveNoteButton);
         this.noteHours = findViewById(R.id.noteHours);
         this.noteMinutes = findViewById(R.id.noteMinutes);
         this.noteTitle = findViewById(R.id.noteTitle);
         this.noteParticipants = findViewById(R.id.noteParticipants);
         this.notePlace = findViewById(R.id.notePlace);
 
-        this.saveNoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        saveNoteButton.setOnClickListener(listener -> {
 
-                noteService.saveNote(buildNote());
+            noteService.saveNote(buildNote());
 
-                finish();
-            }
+            finish();
+
         });
     }
 

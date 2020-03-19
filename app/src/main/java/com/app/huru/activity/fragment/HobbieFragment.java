@@ -1,14 +1,11 @@
 package com.app.huru.activity.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,10 +29,7 @@ public class HobbieFragment extends Fragment implements ActivityGUI {
     private int layout;
     private View parentView;
 
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private HobbieViewAdapter hobbieViewAdapter;
-    private FloatingActionButton hobbieButtonPlus;
 
     private HobbieService hobbieService;
 
@@ -63,46 +57,28 @@ public class HobbieFragment extends Fragment implements ActivityGUI {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-    @Override
     public void setupGUI() {
 
-        //BOUTON
-        this.hobbieButtonPlus = this.parentView.findViewById(R.id.hobbiesButtonPlus);
+        FloatingActionButton hobbieButtonPlus = this.parentView.findViewById(R.id.hobbiesButtonPlus);
 
-        this.hobbieButtonPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        hobbieButtonPlus.setOnClickListener(view -> {
 
-                Intent intent = new Intent(v.getContext(), AddHobbieActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                v.getContext().startActivity(intent);
-            }
+            Intent intent = new Intent(view.getContext(), AddHobbieActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            view.getContext().startActivity(intent);
+
         });
 
-        //RECYCLER VIEW
-        this.recyclerView = this.parentView.findViewById(R.id.hobbiesRecyclerView);
 
-        this.layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
+        RecyclerView recyclerView = this.parentView.findViewById(R.id.hobbiesRecyclerView);
 
-        this.recyclerView.setLayoutManager(this.layoutManager);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
+
+        recyclerView.setLayoutManager(layoutManager);
 
         this.hobbieViewAdapter = new HobbieViewAdapter();
 
-        this.recyclerView.setAdapter(this.hobbieViewAdapter);
+        recyclerView.setAdapter(this.hobbieViewAdapter);
 
         this.updateHobbiesList();
 

@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.app.huru.R;
-import com.app.huru.service.NoteService;
 import com.app.huru.service.UserService;
 
 /**
@@ -20,9 +17,6 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
 
     private UserService userService;
 
-    private Button loginButton;
-
-    private EditText usernameInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,23 +39,20 @@ public class LogInActivity extends AppCompatActivity implements ActivityGUI{
     @Override
     public void setupGUI() {
 
-        this.usernameInput = findViewById(R.id.username_text);
 
-        this.loginButton = findViewById(R.id.loginButton);
+        EditText usernameInput = findViewById(R.id.username_text);
 
-        this.loginButton.setOnClickListener(new View.OnClickListener(){
+        Button loginButton = findViewById(R.id.loginButton);
 
-            @Override
-            public void onClick(View v) {
+        loginButton.setOnClickListener(listener -> {
 
-                String username = usernameInput.getText().toString();
+            String username = usernameInput.getText().toString();
 
-                if(!username.isEmpty()){
-                    userService.saveUser(username);
-                    startHomeActivity(username);
-                }
-
+            if(!username.isEmpty()){
+                userService.saveUser(username);
+                startHomeActivity(username);
             }
+
         });
     }
     /**

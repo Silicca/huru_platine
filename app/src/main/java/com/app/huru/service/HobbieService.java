@@ -6,7 +6,6 @@ import com.app.huru.dao.HobbieDao;
 import com.app.huru.dao.MoodDao;
 import com.app.huru.dao.impl.HobbieDaoImpl;
 import com.app.huru.dao.impl.MoodDaoImpl;
-import com.app.huru.dao.impl.NoteDaoImpl;
 import com.app.huru.datasource.Database;
 import com.app.huru.model.Hobbie;
 

@@ -2,7 +2,6 @@ package com.app.huru.activity.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,23 +10,16 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.app.huru.R;
 import com.app.huru.activity.ActivityGUI;
-import com.app.huru.model.Stats;
-import com.app.huru.service.MoodService;
 import com.app.huru.service.StatsService;
 import com.app.huru.tools.DateFormatter;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -41,11 +33,7 @@ public class StatsFragment extends Fragment implements ActivityGUI {
     private WebView webview;
 
     private StatsService statsService;
-    private MoodService moodService;
 
-    private Button dayButton;
-    private Button monthButton;
-    private Button totalButton;
 
     private String searchingDate;
 
@@ -62,7 +50,6 @@ public class StatsFragment extends Fragment implements ActivityGUI {
         this.parentView = inflater.inflate(this.layout, container, false);
 
         this.statsService = new StatsService(this.parentView.getContext());
-        this.moodService = new MoodService(this.parentView.getContext());
         this.searchingDate = null;
 
         this.setupGUI();
@@ -73,55 +60,35 @@ public class StatsFragment extends Fragment implements ActivityGUI {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-    @Override
     public void setupGUI() {
 
         this.webview = this.parentView.findViewById(R.id.chartView);
-        this.dayButton = this.parentView.findViewById(R.id.dayButton);
-        this.monthButton = this.parentView.findViewById(R.id.monthButton);
-        this.totalButton = this.parentView.findViewById(R.id.totalButton);
+        Button dayButton = this.parentView.findViewById(R.id.dayButton);
+        Button monthButton = this.parentView.findViewById(R.id.monthButton);
+        Button totalButton = this.parentView.findViewById(R.id.totalButton);
 
-        this.dayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchingDate = DateFormatter.dateToString(new Date());
-                Snackbar.make(v, "Statistiques du jour.", 1000).show();
-                updateWebView();
-            }
+        dayButton.setOnClickListener(view -> {
+
+            searchingDate = DateFormatter.dateToString(new Date());
+            Snackbar.make(view, "Statistiques du jour.", 1000).show();
+            updateWebView();
+
         });
 
-        this.monthButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        monthButton.setOnClickListener(view -> {
 
-                String dateString = DateFormatter.dateToString(new Date());
-                searchingDate = dateString.substring(2, dateString.length());
-                Snackbar.make(v, "Statistiques du mois.", 1000).show();
-                updateWebView();
-            }
+            String dateString = DateFormatter.dateToString(new Date());
+            searchingDate = dateString.substring(2, dateString.length());
+            Snackbar.make(view, "Statistiques du mois.", 1000).show();
+            updateWebView();
+
         });
 
-        this.totalButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchingDate = null;
-                Snackbar.make(v, "Statistiques globales.", 1000).show();
-                updateWebView();
-            }
+        totalButton.setOnClickListener(view -> {
+
+            searchingDate = null;
+            Snackbar.make(view, "Statistiques globales.", 1000).show();
+            updateWebView();
         });
     }
 
@@ -190,6 +157,10 @@ public class StatsFragment extends Fragment implements ActivityGUI {
         @JavascriptInterface
         public int getNum5() {
             return  statsService.getPercentOf("Stressé(e)", searchingDate);
+        }
+
+        public Context getContext(){
+            return this.context;
         }
     }
 }

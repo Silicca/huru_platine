@@ -1,7 +1,6 @@
 package com.app.huru.activity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,18 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.app.huru.R;
 import com.app.huru.model.Note;
 import com.app.huru.service.NoteService;
-import com.google.android.material.snackbar.Snackbar;
+
+
 /**
  * Activité affichant les détails d'une note
  * */
 public class NoteDetailsActivity extends AppCompatActivity implements ActivityGUI {
 
     private NoteService noteService;
-
-    private Button modifyNoteButton;
-    private Button removeNoteButton;
-
-    private TextView noteDate;
 
     private EditText noteHours;
     private EditText noteMinutes;
@@ -48,10 +43,10 @@ public class NoteDetailsActivity extends AppCompatActivity implements ActivityGU
     @Override
     public void setupGUI() {
 
-        this.noteDate = findViewById(R.id.noteDate);
+        TextView noteDate = findViewById(R.id.noteDate);
 
-        this.modifyNoteButton = findViewById(R.id.modifyNoteButton);
-        this.removeNoteButton = findViewById(R.id.removeNoteButton);
+        Button modifyNoteButton = findViewById(R.id.modifyNoteButton);
+        Button removeNoteButton = findViewById(R.id.removeNoteButton);
 
         this.noteHours = findViewById(R.id.noteHours);
         this.noteMinutes = findViewById(R.id.noteMinutes);
@@ -59,27 +54,16 @@ public class NoteDetailsActivity extends AppCompatActivity implements ActivityGU
         this.noteParticipants = findViewById(R.id.noteParticipants);
         this.notePlace = findViewById(R.id.notePlace);
 
-        this.noteDate.setText(this.note.getDate().replace(' ','/'));
+        noteDate.setText(this.note.getDate().replace(' ','/'));
         this.noteHours.setText(this.note.getHours().split(":")[0]);
         this.noteMinutes.setText(this.note.getHours().split(":")[1]);
         this.noteTitle.setText(this.note.getTitle());
         this.noteParticipants.setText(this.note.getParticipants());
         this.notePlace.setText(this.note.getPlace());
 
-        this.modifyNoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        modifyNoteButton.setOnClickListener(listener -> saveModification());
 
-                saveModification();
-            }
-        });
-
-        this.removeNoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removeNote();
-            }
-        });
+        removeNoteButton.setOnClickListener(listener -> removeNote() );
     }
     /**
      * Enregistrement des modifications de la note actuelle

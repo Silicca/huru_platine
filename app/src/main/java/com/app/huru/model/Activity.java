@@ -42,10 +42,6 @@ public class Activity {
         this.percentTiredMax = 50;
     }
 
-    public Activity(String activityName){
-        this.activityName = activityName;
-    }
-
     public String getActivityName(){
         return this.activityName;
     }

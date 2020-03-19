@@ -1,9 +1,7 @@
 package com.app.huru.activity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,13 +25,9 @@ import java.util.List;
 public class HobbieDetailsActivity extends AppCompatActivity implements ActivityGUI {
 
     private HobbieService hobbieService;
-    private MoodService moodService;
+
     private ActivityService activityService;
 
-    private Button modifyHobbieButton;
-    private Button removeHobbieButton;
-    private Button shiftLeftButton;
-    private Button shiftRightButton;
     private ImageView selectMoodImage;
     private TextView selectMoodText;
 
@@ -51,7 +45,7 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
         setContentView(R.layout.hobbie_details_activity_layout);
 
         this.hobbieService = new HobbieService(getApplicationContext());
-        this.moodService = new MoodService(getApplicationContext());
+        MoodService moodService = new MoodService(getApplicationContext());
         this.activityService = new ActivityService(getApplicationContext());
 
         int id = getIntent().getExtras().getInt("hobbieId");
@@ -60,7 +54,7 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
 
         this.oldHobbieName = this.hobbie.getName();
 
-        this.moods = this.moodService.getAllMoods();
+        this.moods = moodService.getAllMoods();
 
         this.selectMoodIndex = 0;
 
@@ -70,10 +64,10 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
     @Override
     public void setupGUI() {
 
-        this.modifyHobbieButton = findViewById(R.id.modifyHobbieButton);
-        this.removeHobbieButton = findViewById(R.id.removeHobbieButton);
-        this.shiftLeftButton = findViewById(R.id.shiftLeftButton);
-        this.shiftRightButton = findViewById(R.id.shiftRightButton);
+        Button modifyHobbieButton = findViewById(R.id.modifyHobbieButton);
+        Button removeHobbieButton = findViewById(R.id.removeHobbieButton);
+        Button shiftLeftButton = findViewById(R.id.shiftLeftButton);
+        Button shiftRightButton = findViewById(R.id.shiftRightButton);
 
         this.selectMoodImage = findViewById(R.id.selectMoodImage);
         this.selectMoodImage.setImageResource(DrawableMoodLoader.load(this.hobbie.getMood()));
@@ -84,36 +78,22 @@ public class HobbieDetailsActivity extends AppCompatActivity implements Activity
         this.hobbieName = findViewById(R.id.hobbieName);
         this.hobbieName.setText(this.hobbie.getName());
 
-        this.modifyHobbieButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveModification();
-            }
+        modifyHobbieButton.setOnClickListener(listener ->
+                saveModification()
+        );
+
+        removeHobbieButton.setOnClickListener(listener ->
+                removeHobbie()
+        );
+
+        shiftLeftButton.setOnClickListener(listener -> {
+            selectMoodIndex --;
+            selectMood();
         });
 
-        this.removeHobbieButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removeHobbie();
-            }
-        });
-
-        this.shiftLeftButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                selectMoodIndex --;
-                selectMood();
-            }
-        });
-
-        this.shiftRightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+        shiftRightButton.setOnClickListener(listener ->  {
                 selectMoodIndex ++;
                 selectMood();
-            }
         });
     }
 

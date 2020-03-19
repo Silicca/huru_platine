@@ -3,30 +3,26 @@ package com.app.huru.tools;
 import com.applandeo.materialcalendarview.EventDay;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
 
 /**
  * Classe utilitaire permettant de manipuler et convertir des dates
  * */
-public abstract class DateFormatter {
+public interface DateFormatter {
 
-     private static final SimpleDateFormat formatter = new SimpleDateFormat("dd MM yyyy");
-
-     public static String eventDayToString(EventDay day){
+     static String eventDayToString(EventDay day){
 
          Date dateTime =  Date.from(day.getCalendar().toInstant());
 
-         return formatter.format(dateTime);
+         return new SimpleDateFormat("dd MM yyyy").format(dateTime);
      }
 
-     public static String dateToString(Date date){
-         return formatter.format(date);
+     static String dateToString(Date date){
+         return new SimpleDateFormat("dd MM yyyy").format(date);
      }
 
-     public static Calendar stringToCalendar(String date){
+     static Calendar stringToCalendar(String date){
 
          Calendar calendar = Calendar.getInstance();
 

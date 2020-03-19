@@ -14,9 +14,6 @@ public class Hobbie {
         //constructeur vide
     }
 
-    public Hobbie(String name){
-        this.name = name;
-    }
 
     public int getId() { return this.id; }
 

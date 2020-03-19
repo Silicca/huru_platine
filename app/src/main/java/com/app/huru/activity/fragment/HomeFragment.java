@@ -1,17 +1,13 @@
 package com.app.huru.activity.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,9 +38,7 @@ public class HomeFragment extends Fragment implements ActivityGUI {
     private View parentView;
 
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private NoteViewAdapter noteViewAdapter;
-    private FloatingActionButton calendarButtonPlus;
 
     private TextView actualMoodText;
     private TextView noNoteMessage;
@@ -79,21 +73,6 @@ public class HomeFragment extends Fragment implements ActivityGUI {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-    @Override
     public void setupGUI() {
 
         this.actualMoodText = this.parentView.findViewById(R.id.actualMoodText);
@@ -101,25 +80,23 @@ public class HomeFragment extends Fragment implements ActivityGUI {
         this.noNoteMessage = this.parentView.findViewById(R.id.noNotesMessage);
         this.noNoteMessage.setVisibility(View.GONE);
 
-        //BOUTON
-        this.calendarButtonPlus = this.parentView.findViewById(R.id.calendarButtonPlus);
 
-        this.calendarButtonPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        FloatingActionButton calendarButtonPlus = this.parentView.findViewById(R.id.calendarButtonPlus);
 
-                Intent intent = new Intent(v.getContext(), CalendarActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                v.getContext().startActivity(intent);
-            }
+        calendarButtonPlus.setOnClickListener(view ->{
+
+            Intent intent = new Intent(view.getContext(), CalendarActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            view.getContext().startActivity(intent);
+
         });
 
         //RECYCLER VIEW
         this.recyclerView = this.parentView.findViewById(R.id.homeNotesRecyclerView);
 
-        this.layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
 
-        this.recyclerView.setLayoutManager(this.layoutManager);
+        this.recyclerView.setLayoutManager(layoutManager);
 
         this.noteViewAdapter = new NoteViewAdapter();
 
@@ -183,7 +160,7 @@ public class HomeFragment extends Fragment implements ActivityGUI {
 
     private void updateActualMood(){
 
-        Mood actualMood = new Mood();
+        Mood actualMood;
 
         List<Stats> lastStats = this.statsService.getAllStats();
 

@@ -8,17 +8,14 @@ import androidx.annotation.NonNull;
  * */
 public class User {
 
-    public int id;
+    private int id;
 
-    public String name;
+    private String name;
 
     public User(){
 
-    }
+     //Constructeur vide
 
-    public User(int id, String name){
-        this.id = id;
-        this.name = name;
     }
 
     public int getId(){
